@@ -15,7 +15,12 @@ export async function importSpreadsheet(file: File) {
       body: formData,
     });
 
-    return response.json();
+    if (response.ok) {
+      return response.json();
+    }
+    else {
+      throw new Error("Falha na importação");
+    }
   } catch {
     throw new Error("Falha na importação");
   }
