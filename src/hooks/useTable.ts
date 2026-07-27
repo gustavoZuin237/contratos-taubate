@@ -11,7 +11,7 @@ import {
 
 import { columns } from "../data/tableColumns";
 
-export function useSearch(importedSheet: NormalizedRow[]) {
+export function useTable(importedSheet: NormalizedRow[]) {
   const [globalFilter, setGlobalFilter] = useState("");
   const [fornecedorFilter, setFornecedorFilter] = useState("");
   const [secretariaFilter, setSecretariaFilter] = useState("");

@@ -12,5 +12,5 @@ export const PageContainer = styled.div`
 `;
 
 export const PageTitle = styled.h1`
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 `;
