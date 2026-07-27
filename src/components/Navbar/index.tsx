@@ -3,8 +3,6 @@ import * as s from "./styles";
 import {
   NotebookIcon,
   BookBookmarkIcon,
-  ChartBarIcon,
-  MagnifyingGlassIcon,
   MoonIcon,
   SunIcon,
 } from "@phosphor-icons/react";
@@ -19,7 +17,6 @@ export function Navbar() {
   return (
     <s.NavbarContainer>
       <s.LinkContainer>
-        {" "}
         <s.StyledLink to="/">
           <NotebookIcon size={22} weight="fill" />
           <s.Label>Registrar contrato</s.Label>
@@ -28,14 +25,7 @@ export function Navbar() {
           <BookBookmarkIcon size={22} weight="fill" />
           <s.Label>Registro mestre</s.Label>
         </s.StyledLink>
-        <s.StyledLink to="/dashboard">
-          <ChartBarIcon size={22} weight="fill" />
-          <s.Label>Gráficos</s.Label>
-        </s.StyledLink>
-        <s.StyledLink to="/search">
-          <MagnifyingGlassIcon size={22} weight="fill" />
-          <s.Label>Pesquisa</s.Label>
-        </s.StyledLink>
+
         <s.ThemeButtonContainer onClick={toggleTheme}>
           <Button variant="ghost">
             {themeMode == "dark" ? (
@@ -43,8 +33,6 @@ export function Navbar() {
             ) : (
               <SunIcon size={22} weight="fill" />
             )}
-
-            <s.Label>Trocar tema</s.Label>
           </Button>
         </s.ThemeButtonContainer>
       </s.LinkContainer>

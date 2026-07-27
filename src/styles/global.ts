@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     /* Firefox */
     * {
         scrollbar-width: thin;
-        scrollbar-color: #3a3a3a #252525;
+        scrollbar-color: #217346 #979797;
     }
 
     /* Chromium / Webkit */

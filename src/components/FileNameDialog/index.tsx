@@ -51,7 +51,7 @@ export const FileNameDialog = forwardRef<FileNameDialogHandle, Props>(
         style={{
           width: "100%",
           height: "100%",
-          padding: "10rem 0 10rem 6rem",
+          padding: "10rem 0px 10rem 2.5rem",
           background: "transparent",
           border: 0,
         }}
