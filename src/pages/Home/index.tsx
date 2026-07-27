@@ -18,7 +18,7 @@ import { useTable } from "../../hooks/useTable";
 import toast from "react-hot-toast";
 import { PencilIcon } from "@phosphor-icons/react";
 
-document.title = "Gen-Excel"
+document.title = "Gen-Excel";
 
 export function Home() {
   const [debugIterator, setDebugIterator] = useState(1);
@@ -52,9 +52,12 @@ export function Home() {
   }
 
   function editCell(cell: any, columnHeader?: string) {
-    const currentValue = cell[columnHeader ?? ""]
+    const currentValue = cell[columnHeader ?? ""];
 
-    const editedValue = window.prompt("Insira o novo valor para esse campo:", currentValue);
+    const editedValue = window.prompt(
+      "Insira o novo valor para esse campo:",
+      currentValue
+    );
 
     if (!editedValue || editedValue.trim() == "") return currentValue;
 
@@ -135,16 +138,18 @@ export function Home() {
             <thead>
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <s.StyledTableHeader key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </s.StyledTableHeader>
-                  ))}
+                  {headerGroup.headers.map((header) =>
+                    header.isPlaceholder ||
+                    header.column.columnDef.header ===
+                      "Data de exportação" ? null : (
+                      <s.StyledTableHeader key={header.id}>
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                      </s.StyledTableHeader>
+                    )
+                  )}
                 </tr>
               ))}
             </thead>
@@ -152,29 +157,33 @@ export function Home() {
             <tbody>
               {table.getRowModel().rows.map((row) => (
                 <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <s.StyledTableCell key={cell.id}>
-                      <s.EditCellButton
-                        onClick={() => {
-                          if ("accessorKey" in cell.column.columnDef) {
-                            editCell(
-                              cell.row.original,
-                              cell.column.columnDef.accessorKey
-                            );
-                          } else {
-                            toast.error("Falha na edição!");
-                          }
-                        }}
-                      >
-                        <PencilIcon size={16} />
-                      </s.EditCellButton>
+                  {row.getVisibleCells().map((cell) =>
+                    "accessorKey" in cell.column.columnDef &&
+                    cell.column.columnDef.accessorKey ==
+                      "dataExportacao" ? null : (
+                      <s.StyledTableCell key={cell.id}>
+                        <s.EditCellButton
+                          onClick={() => {
+                            if ("accessorKey" in cell.column.columnDef) {
+                              editCell(
+                                cell.row.original,
+                                cell.column.columnDef.accessorKey
+                              );
+                            } else {
+                              toast.error("Falha na edição!");
+                            }
+                          }}
+                        >
+                          <PencilIcon size={16} />
+                        </s.EditCellButton>
 
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </s.StyledTableCell>
-                  ))}
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </s.StyledTableCell>
+                    )
+                  )}
                 </tr>
               ))}
             </tbody>
