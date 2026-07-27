@@ -18,6 +18,8 @@ import { useTable } from "../../hooks/useTable";
 import toast from "react-hot-toast";
 import { PencilIcon } from "@phosphor-icons/react";
 
+document.title = "Gen-Excel"
+
 export function Home() {
   const [debugIterator, setDebugIterator] = useState(1);
 

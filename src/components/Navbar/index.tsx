@@ -19,11 +19,11 @@ export function Navbar() {
       <s.LinkContainer>
         <s.StyledLink to="/">
           <NotebookIcon size={22} weight="fill" />
-          <s.Label>Registrar contrato</s.Label>
+          <s.Label>Novo Registro</s.Label>
         </s.StyledLink>
         <s.StyledLink to="/master">
           <BookBookmarkIcon size={22} weight="fill" />
-          <s.Label>Registro mestre</s.Label>
+          <s.Label>Unir Registros</s.Label>
         </s.StyledLink>
 
         <s.ThemeButtonContainer onClick={toggleTheme}>
