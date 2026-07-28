@@ -35,11 +35,6 @@ export const FieldWrapper = styled.div`
   gap: 4px;
 `;
 
-export const ErrorMessage = styled.span`
-  color: ${(props) => props.theme["danger"]};
-  font-size: 0.75rem;
-`;
-
 export const TableWrapper = styled.div`
   width: 100%;
   overflow-x: auto;
