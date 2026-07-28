@@ -9,8 +9,11 @@ import { parseNumber } from "@shared/utils/parsing/parseNumber.js";
 import { sanitizeString } from "@shared/utils/strings/sanitizeString.js";
 import { formatDate } from "@shared/utils/dates/formatDate";
 
+import { v4 as uuidv4 } from 'uuid';
+
 export function normalizeRow(row: RawSpreadsheetRow): NormalizedRow {
   return {
+    id: uuidv4(),
     secretaria: sanitizeString(row["Secretaria"]),
     orgao: sanitizeString(row["Órgão"]),
     numeroProcesso: sanitizeString(row["N° do Processo"]),

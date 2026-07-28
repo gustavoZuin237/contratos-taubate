@@ -1,6 +1,7 @@
 import type { NormalizedRow } from "./rowFormats.js";
 
 export const COLUMN_LABELS: Record<keyof NormalizedRow, string> = {
+  id: "ID",
   secretaria: "Secretaria",
   orgao: "Órgão",
   numeroProcesso: "N° do Processo",

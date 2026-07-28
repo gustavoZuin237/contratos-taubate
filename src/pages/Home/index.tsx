@@ -74,7 +74,7 @@ export function Home() {
 
     setRows((prevRows) =>
       prevRows.map((row) =>
-        row.numeroProcesso === cell.numeroProcesso
+        row.id === cell.id
           ? {
               ...row,
               [columnHeader]: editedValue,
