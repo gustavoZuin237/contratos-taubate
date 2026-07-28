@@ -16,7 +16,14 @@ import { flexRender } from "@tanstack/react-table";
 
 import { useTable } from "../../hooks/useTable";
 import toast from "react-hot-toast";
-import { PencilIcon } from "@phosphor-icons/react";
+import {
+  PencilIcon,
+  RowsPlusBottomIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
+import type { NormalizedRow } from "@shared/types/rowFormats";
+
+import { v4 as uuidv4 } from 'uuid';
 
 document.title = "Gen-Excel";
 
@@ -62,7 +69,6 @@ export function Home() {
     if (!editedValue || editedValue.trim() == "") return currentValue;
 
     if (!columnHeader) {
-      console.log("TESTE");
       return;
     }
 
@@ -76,6 +82,29 @@ export function Home() {
           : row
       )
     );
+  }
+
+  function duplicateRow(row: NormalizedRow) {
+    const duplicateIndex = rows.indexOf(row);
+
+    const rowToDuplicate = {
+      ...rows[duplicateIndex],
+      id: uuidv4()
+    };
+
+    const newArray = [
+      ...rows.slice(0, duplicateIndex + 1),
+      rowToDuplicate,
+      ...rows.slice(duplicateIndex + 1),
+    ];
+
+    setRows(newArray);
+  }
+
+  function deleteRow(rowId: string) {
+    const deleteIndex = Number(rowId);
+
+    setRows((prevRows) => prevRows.filter((_, index) => index !== deleteIndex));
   }
 
   return (
@@ -150,6 +179,9 @@ export function Home() {
                       </s.StyledTableHeader>
                     )
                   )}
+                  <s.StyledTableHeader>Duplicar linha</s.StyledTableHeader>
+
+                  <s.StyledTableHeader>Excluir linha</s.StyledTableHeader>
                 </tr>
               ))}
             </thead>
@@ -162,7 +194,7 @@ export function Home() {
                     cell.column.columnDef.accessorKey ==
                       "dataExportacao" ? null : (
                       <s.StyledTableCell key={cell.id}>
-                        <s.EditCellButton
+                        <s.TableIconButton
                           onClick={() => {
                             if ("accessorKey" in cell.column.columnDef) {
                               editCell(
@@ -175,7 +207,7 @@ export function Home() {
                           }}
                         >
                           <PencilIcon size={16} />
-                        </s.EditCellButton>
+                        </s.TableIconButton>
 
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -184,6 +216,26 @@ export function Home() {
                       </s.StyledTableCell>
                     )
                   )}
+
+                  <s.StyledTableCell>
+                    <s.DuplicateRowButton
+                      onClick={() => {
+                        duplicateRow(row.original);
+                      }}
+                    >
+                      <RowsPlusBottomIcon size={32} />
+                    </s.DuplicateRowButton>
+                  </s.StyledTableCell>
+
+                  <s.StyledTableCell>
+                    <s.DeleteRowButton
+                      onClick={() => {
+                        deleteRow(row.id);
+                      }}
+                    >
+                      <TrashIcon size={32} />
+                    </s.DeleteRowButton>
+                  </s.StyledTableCell>
                 </tr>
               ))}
             </tbody>

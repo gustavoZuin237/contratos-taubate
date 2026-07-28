@@ -7,6 +7,7 @@ import { parseCurrency } from "@shared/utils/currency/parseCurrency";
 export function normalizeFormData(data: FormValues) {
   const normalizedRow: NormalizedRow = {
     ...data,
+    id: data.id,
     secretaria: data.secretaria,
     orgao: data.orgao,
     numeroProcesso: data.numeroProcesso,

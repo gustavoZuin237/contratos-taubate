@@ -77,7 +77,7 @@ export const StyledTableCell = styled.td`
   white-space: nowrap;
 `;
 
-export const EditCellButton = styled.button`
+export const TableIconButton = styled.button`
   background: none;
   outline: none;
   border: none;
@@ -89,6 +89,16 @@ export const EditCellButton = styled.button`
     cursor: pointer;
     transform: translateY(-3px);
   }
+`
+
+export const DuplicateRowButton = styled(TableIconButton)`
+  color: ${(props) => props.theme['primarySoft']};
+  margin: 0;
+`
+
+export const DeleteRowButton = styled(TableIconButton)`
+  color: ${(props) => props.theme['danger']};
+  margin: 0;
 `
 
 export const RowCount = styled.div`

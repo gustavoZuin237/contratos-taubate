@@ -1,5 +1,8 @@
+import {v4 as uuidv4} from "uuid"
+
 export function mockForm(iterator: number) {
   const MOCK_FORM = {
+    id: uuidv4(),
     secretaria: `Secretaria de Teste ${iterator}`,
     orgao: "10.10.10",
     numeroProcesso: `${iterator}/${iterator < 10 ? `0${iterator}` : iterator}`,

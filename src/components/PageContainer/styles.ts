@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PageContainer = styled.div`
   width: 100%;
   height: auto;
-  padding: 2rem;
+  padding: 2rem 4rem;
   border-radius: 12px;
   display: flex;
   flex-direction: column;

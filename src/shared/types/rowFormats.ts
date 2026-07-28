@@ -1,6 +1,7 @@
 import { Type, type Static } from "@sinclair/typebox";
 
 export const NormalizedRowSchema = Type.Object({
+  id: Type.String(),
   secretaria: Type.String(),
   orgao: Type.String(),
   numeroProcesso: Type.String(),

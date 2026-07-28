@@ -11,6 +11,8 @@ import { parseCurrency } from "@shared/utils/currency/parseCurrency";
 
 import type { NormalizedRow } from "@shared/types/rowFormats";
 
+import { v4 as uuidv4 } from 'uuid';
+
 export function useContractForm() {
   const [rows, setRows] = useState<NormalizedRow[]>([]);
 
@@ -71,6 +73,8 @@ export function useContractForm() {
   }
 
   function onValidSubmit(data: FormValues) {
+    data = {...data, id: uuidv4()}
+
     setRows((prev) => [...prev, normalizeFormData(data)]);
     reset()
   }
