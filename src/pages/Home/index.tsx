@@ -108,7 +108,7 @@ export function Home() {
   }
 
   return (
-    <PageContainer title="Registro de Contratos">
+    <PageContainer title="Novo registro">
       <s.InputContainer onSubmit={handleSubmit(onValidSubmit)} noValidate>
         <FormFields
           control={control}

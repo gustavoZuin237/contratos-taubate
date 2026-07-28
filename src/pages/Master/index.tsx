@@ -66,7 +66,7 @@ export function Master() {
   }
 
   return (
-    <PageContainer title="Registro Mestre">
+    <PageContainer title="Unir registros">
       <MultipleFileInput
         key={inputResetKey}
         onChange={handleMultipleFileUpload}
