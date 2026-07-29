@@ -13,7 +13,7 @@ interface ButtonProps {
 const buttonVariants = {
   primary: css`
     background: ${({ theme }) => theme["primary"]};
-    color: ${({ theme }) => theme["text"]};
+    color: #fff;
     transition: 0.3s;
     border: 1.5px solid ${({ theme }) => theme["border"]};
 
@@ -35,7 +35,7 @@ const buttonVariants = {
 
   danger: css`
     background: ${({ theme }) => theme["danger"]};
-    color: ${({ theme }) => theme["text"]};
+    color: #fff;
     transition: 0.3s;
     border: 1.5px solid ${({ theme }) => theme["border"]};
 
