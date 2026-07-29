@@ -1,5 +1,4 @@
-// ? The structure for columns needs to include "accessorKey" for the table to work
-import { formatTableCurrency } from "../utils/table/formatTableData";
+import { formatTableCurrency } from "../utils/table/formatTableCurrency";
 
 import type { ColumnDef } from "@tanstack/react-table";
 
@@ -78,6 +77,11 @@ export const columns: ColumnDef<NormalizedRow>[] = [
     cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
   },
   {
+    accessorKey: "valorAnual",
+    header: "Valor Anual",
+    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+  },
+  {
     accessorKey: "valorMensal",
     header: "Valor Mensal",
     cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
@@ -113,11 +117,6 @@ export const columns: ColumnDef<NormalizedRow>[] = [
     cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
   },
   {
-    accessorKey: "valorAnual",
-    header: "Valor Anual",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
-  },
-  {
     accessorKey: "reajusteAnual",
     header: "Reajuste Anual",
     cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
@@ -138,8 +137,8 @@ export const columns: ColumnDef<NormalizedRow>[] = [
     cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
   },
   {
-    accessorKey: "dataPagamento",
-    header: "Data de Pagamento",
+    accessorKey: "diaPagamento",
+    header: "Dia de pagamento",
     cell: ({ getValue }) => {
       const value = getValue<Date>();
 

@@ -5,7 +5,7 @@ import * as s from "./styles";
 import { FormFields } from "@components/FormFields/FormFields";
 import { Button } from "@components/Button";
 import { PageContainer } from "@components/PageContainer";
-import { FileNameDialog } from "@components/FileNameDialog";
+import { FilenameDialog } from "@components/FilenameDialog";
 
 import { useContractForm } from "../../hooks/useContractForm";
 import { useFileExport } from "../../hooks/useFileExport";
@@ -223,7 +223,7 @@ export function Home() {
                         duplicateRow(row.original);
                       }}
                     >
-                      <RowsPlusBottomIcon size={32} />
+                      <RowsPlusBottomIcon size={28} />
                     </s.DuplicateRowButton>
                   </s.StyledTableCell>
 
@@ -233,7 +233,7 @@ export function Home() {
                         deleteRow(row.id);
                       }}
                     >
-                      <TrashIcon size={32} />
+                      <TrashIcon size={28} />
                     </s.DeleteRowButton>
                   </s.StyledTableCell>
                 </tr>
@@ -251,7 +251,7 @@ export function Home() {
         onChange={handleAppendFile}
       />
 
-      <FileNameDialog
+      <FilenameDialog
         ref={dialogRef}
         onConfirm={handleExport}
         onCancel={() => {}}

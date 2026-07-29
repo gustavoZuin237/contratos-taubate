@@ -75,4 +75,6 @@ export interface FieldConfig {
   schema?: AnyZodSchema;
   sanitize: SanitizeFunction;
   maxLength?: number;
+  sectionHeader?: boolean
+  sectionHeaderText?: string
 }

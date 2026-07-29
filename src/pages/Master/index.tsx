@@ -9,12 +9,12 @@ import type { NormalizedRow } from "@shared/types/rowFormats";
 
 import { Button } from "@components/Button";
 import { PageContainer } from "@components/PageContainer";
-import { MultipleFileInput } from "@components/MultipleFileInput";
+import { FileInput } from "@components/FileInput";
 
 import {
-  FileNameDialog,
+  FilenameDialog,
   type FileNameDialogHandle,
-} from "@components/FileNameDialog";
+} from "@components/FilenameDialog";
 
 import toast from "react-hot-toast";
 
@@ -67,14 +67,14 @@ export function Master() {
 
   return (
     <PageContainer title="Unir registros">
-      <MultipleFileInput
+      <FileInput
         key={inputResetKey}
         onChange={handleMultipleFileUpload}
       />
 
       <s.ButtonContainer>
         <Button
-          variant="success"
+          variant="primary"
           disabled={mergedSheet.length === 0}
           onClick={() => {
             dialogRef.current?.showModal();
@@ -88,7 +88,7 @@ export function Master() {
         </Button>
       </s.ButtonContainer>
 
-      <FileNameDialog
+      <FilenameDialog
         ref={dialogRef}
         onConfirm={handleExport}
         onCancel={() => {

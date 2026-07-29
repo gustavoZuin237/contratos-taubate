@@ -26,7 +26,12 @@ export function EditableField({
 }: Props) {
   return (
     <s.FieldWrapper>
-      <s.InputLabel>{config.label}</s.InputLabel>
+      <s.LabelContainer>
+        <s.InputLabel>{config.label}</s.InputLabel>
+
+        {config.required && <s.RequiredFieldIndicator>*</s.RequiredFieldIndicator>}
+      </s.LabelContainer>
+
       <Controller
         name={fieldName}
         control={control}

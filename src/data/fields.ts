@@ -9,6 +9,16 @@ import {
 } from "../types/fieldConfiguration";
 
 export const FIELDS: Record<string, FieldConfig> = {
+  // "Identificação" section header
+  identificationSectionHeader: {
+    label: "",
+    type: "text",
+    placeholder: "",
+    required: false,
+    sanitize: sanitize.none,
+    sectionHeader: true,
+    sectionHeaderText: "Identificação",
+  },
   secretaria: {
     label: "Secretaria",
     placeholder: "Nome da secretaria",
@@ -35,7 +45,7 @@ export const FIELDS: Record<string, FieldConfig> = {
   },
 
   numeroProcesso: {
-    label: "N° do Processo",
+    label: "Número do processo",
     placeholder: "xxxxxx/xx",
     type: "masked",
     mask: "processo",
@@ -99,7 +109,7 @@ export const FIELDS: Record<string, FieldConfig> = {
   },
 
   dotacaoOrcamentaria: {
-    label: "Dotação Orçamentária",
+    label: "Dotação orçamentária",
     placeholder: "xxxxxx.xxxx.xx.xx.xxx.xxxx.xxxx",
     type: "masked",
     mask: "dotacao",
@@ -144,26 +154,84 @@ export const FIELDS: Record<string, FieldConfig> = {
     maxLength: 7,
   },
 
-  quantidadeProduto: {
-    label: "Quantidade/Produto",
-    placeholder: "Quantidade ou produto",
+  gestorContrato: {
+    label: "Gestor do contrato",
+    placeholder: "Nome e sobrenome do gestor do contrato",
     type: "text",
-    required: false,
-    regex: REGEX.qtdProduto,
-    schema: requiredString(
-      z.string().regex(REGEX.qtdProduto, "Apenas letras, números e espaços")
+    required: true,
+    regex: REGEX.gestor,
+    schema: optionalString(
+      z
+        .string()
+        .regex(
+          REGEX.gestor,
+          "Formato incorreto. O formato esperado é: Nome Sobrenome"
+        )
     ),
-    sanitize: sanitize.alphanumeric,
+    sanitize: sanitize.none,
+  },
+
+  alterador: {
+    label: "Responsável pelo preenchimento",
+    placeholder: "Nome e sobrenome do responsável pelo preenchimento",
+    type: "text",
+    required: true,
+    regex: REGEX.gestor, // reutilized the regex and sanitization rules
+    schema: optionalString(
+      z
+        .string()
+        .regex(
+          REGEX.gestor,
+          "Formato incorreto. O formato esperado é: Nome Sobrenome"
+        )
+    ),
+    sanitize: sanitize.none,
+  },
+
+  // "Data e Prazo" section header
+  datesSectionHeader: {
+    label: "",
+    type: "text",
+    placeholder: "",
+    required: false,
+    sanitize: sanitize.none,
+    sectionHeader: true,
+    sectionHeaderText: "Datas e Prazo",
   },
 
   dataInicio: {
-    label: "Data de Início",
+    label: "Data de início",
     placeholder: "dd/mm/aa",
     type: "text",
     mask: "data",
     required: true,
     regex: REGEX.data,
     schema: requiredString(
+      z.string().regex(REGEX.data, "Formato esperado: dd/mm/aa")
+    ),
+    sanitize: sanitize.dateChars,
+  },
+  dataVencimento: {
+    label: "Data de término/vencimento",
+    placeholder: "dd/mm/aa",
+    type: "text",
+    mask: "data",
+    required: true,
+    regex: REGEX.data,
+    schema: requiredString(
+      z.string().regex(REGEX.data, "Formato esperado: dd/mm/aa")
+    ),
+    sanitize: sanitize.dateChars,
+  },
+
+  diaPagamento: {
+    label: "Dia de pagamento (Previsão)",
+    placeholder: "dd/mm/aa",
+    type: "text",
+    mask: "data",
+    required: false,
+    regex: REGEX.data,
+    schema: optionalString(
       z.string().regex(REGEX.data, "Formato esperado: dd/mm/aa")
     ),
     sanitize: sanitize.dateChars,
@@ -181,21 +249,33 @@ export const FIELDS: Record<string, FieldConfig> = {
     maxLength: 2,
   },
 
-  dataVencimento: {
-    label: "Data de Término/Vencimento",
-    placeholder: "dd/mm/aa",
+  // "Valores" section header
+  valuesSectionHeader: {
+    label: "",
     type: "text",
-    mask: "data",
-    required: true,
-    regex: REGEX.data,
-    schema: requiredString(
-      z.string().regex(REGEX.data, "Formato esperado: dd/mm/aa")
-    ),
-    sanitize: sanitize.dateChars,
+    placeholder: "",
+    required: false,
+    sanitize: sanitize.none,
+    sectionHeader: true,
+    sectionHeaderText: "Valores",
   },
 
   valorTotalContrato: {
-    label: "Valor Total do Contrato",
+    label: "Valor total do contrato",
+    placeholder: "xxxx,xx",
+    type: "text",
+    inputMode: "decimal",
+    mask: "dinheiro",
+    required: false,
+    regex: REGEX.dinheiro,
+    schema: optionalString(
+      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+    ),
+    sanitize: sanitize.currency,
+  },
+
+  valorAnual: {
+    label: "Valor anual no início do contrato",
     placeholder: "xxxx,xx",
     type: "text",
     inputMode: "decimal",
@@ -209,7 +289,7 @@ export const FIELDS: Record<string, FieldConfig> = {
   },
 
   valorMensal: {
-    label: "Valor Mensal",
+    label: "Valor mensal",
     placeholder: "xxxx,xx",
     type: "text",
     inputMode: "decimal",
@@ -270,7 +350,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     type: "text",
     inputMode: "decimal",
     mask: "dinheiro",
-    required: true,
+    required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
       z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
@@ -306,22 +386,8 @@ export const FIELDS: Record<string, FieldConfig> = {
     sanitize: sanitize.currency,
   },
 
-  valorAnual: {
-    label: "Valor Anual do Início do Contrato",
-    placeholder: "xxxx,xx",
-    type: "text",
-    inputMode: "decimal",
-    mask: "dinheiro",
-    required: false,
-    regex: REGEX.dinheiro,
-    schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
-    ),
-    sanitize: sanitize.currency,
-  },
-
   reajusteAnual: {
-    label: "Reajuste Anual",
+    label: "Reajuste anual",
     placeholder: "xxxx,xx",
     type: "text",
     inputMode: "decimal",
@@ -335,7 +401,7 @@ export const FIELDS: Record<string, FieldConfig> = {
   },
 
   aditivoAnual: {
-    label: "Aditivo Anual",
+    label: "Aditivo anual",
     placeholder: "xxxx,xx",
     type: "text",
     inputMode: "decimal",
@@ -349,7 +415,7 @@ export const FIELDS: Record<string, FieldConfig> = {
   },
 
   supressaoAnual: {
-    label: "Supressão Anual",
+    label: "Supressão anual",
     placeholder: "xxxx,xx",
     type: "text",
     inputMode: "decimal",
@@ -363,7 +429,7 @@ export const FIELDS: Record<string, FieldConfig> = {
   },
 
   valorTotalAnual: {
-    label: "Valor Total Anual",
+    label: "Valor total anual",
     placeholder: "",
     type: "text",
     inputMode: "decimal",
@@ -373,51 +439,27 @@ export const FIELDS: Record<string, FieldConfig> = {
     sanitize: sanitize.none,
   },
 
-  dataPagamento: {
-    label: "Data de Pagamento",
-    placeholder: "dd/mm/aa",
+  // "Informações Adicionais" section header
+  additionalInformationSectionHeader: {
+    label: "",
     type: "text",
-    mask: "data",
+    placeholder: "",
     required: false,
-    regex: REGEX.data,
-    schema: optionalString(
-      z.string().regex(REGEX.data, "Formato esperado: dd/mm/aa")
-    ),
-    sanitize: sanitize.dateChars,
+    sanitize: sanitize.none,
+    sectionHeader: true,
+    sectionHeaderText: "Informações Adicionais",
   },
 
-  gestorContrato: {
-    label: "Gestor do contrato",
-    placeholder: "Nome e sobrenome do gestor do contrato",
+  quantidadeProduto: {
+    label: "Quantidade/Produto",
+    placeholder: "Quantidade ou produto",
     type: "text",
-    required: true,
-    regex: REGEX.gestor,
-    schema: optionalString(
-      z
-        .string()
-        .regex(
-          REGEX.gestor,
-          "Formato incorreto. O formato esperado é: Nome Sobrenome"
-        )
+    required: false,
+    regex: REGEX.qtdProduto,
+    schema: requiredString(
+      z.string().regex(REGEX.qtdProduto, "Apenas letras, números e espaços")
     ),
-    sanitize: sanitize.none,
-  },
-
-  alterador: {
-    label: "Responsável pelo Preenchimento",
-    placeholder: "Nome e sobrenome do responsável pelo preenchimento",
-    type: "text",
-    required: true,
-    regex: REGEX.gestor, // reutilized the regex and sanitization rules
-    schema: optionalString(
-      z
-        .string()
-        .regex(
-          REGEX.gestor,
-          "Formato incorreto. O formato esperado é: Nome Sobrenome"
-        )
-    ),
-    sanitize: sanitize.none,
+    sanitize: sanitize.alphanumeric,
   },
 
   observacao: {

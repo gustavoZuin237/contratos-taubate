@@ -14,7 +14,7 @@ const inputVariants = {
 
     &:focus {
       border-color: ${({ theme }) => theme["primary"]};
-      box-shadow: 0 0 0 3px rgba(33, 180, 70, 0.15);
+      box-shadow: 0 0 0 3px rgba(33, 48, 180, 0.15);
     }
   `,
 
@@ -25,7 +25,7 @@ const inputVariants = {
 
     &:focus {
       border-color: ${({ theme }) => theme["primary"]};
-      box-shadow: 0 0 0 3px rgba(33, 180, 70, 0.15);
+      box-shadow: 0 0 0 3px rgba(33, 48, 180, 0.15);
     }
   `,
 
@@ -37,7 +37,7 @@ const inputVariants = {
     &:focus {
       color: ${({ theme }) => theme["text"]};
       border-color: ${({ theme }) => theme["primary"]};
-      box-shadow: 0 0 0 3px rgba(33, 180, 70, 0.35);
+      box-shadow: 0 0 0 3px rgba(33, 48, 180, 0.35);
     }
   `,
 };
@@ -56,7 +56,7 @@ export const InputContainer = styled.input<InputProps>`
     color 0.2s ease;
 
   &::placeholder {
-    color: ${({ theme }) => theme["textSubtle"]};
+    color: ${({ theme }) => theme["textMuted"]};
   }
 
   &:disabled {

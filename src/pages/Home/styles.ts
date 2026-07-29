@@ -37,7 +37,7 @@ export const FieldWrapper = styled.div`
 
 export const TableWrapper = styled.div`
   width: 100%;
-  overflow-x: auto;
+  overflow-x: scroll;
 `;
 
 export const StyledTable = styled.table`
@@ -48,11 +48,12 @@ export const StyledTable = styled.table`
   border-radius: 12px;
   border: 2px solid ${(props) => props.theme["border"]};
   background-color: ${(props) => props.theme["surfaceAlt"]};
+  font-size: 0.75rem;
 `;
 
 export const StyledTableHeader = styled.th`
   min-width: auto;
-  border: 1px solid ${(props) => props.theme["chartLines"]};
+  border: 1px solid ${(props) => props.theme["border"]};
   color: ${(props) => props.theme["text"]};
   padding: 1rem;
   overflow: hidden;
@@ -64,7 +65,7 @@ export const StyledTableCell = styled.td`
   width: max-content;
   max-width: 20rem;
   text-align: center;
-  border: 1px solid ${(props) => props.theme["chartLines"]};
+  border: 1px solid ${(props) => props.theme["border"]};
   color: ${(props) => props.theme["text"]};
   padding: 1.5rem;
   overflow: hidden;

@@ -2,12 +2,12 @@ import { Outlet } from "react-router-dom";
 
 import * as s from "./styles";
 
-import { Navbar } from "@components/Navbar";
+import { NavHeader } from "@components/NavHeader";
 
 export function RootLayout() {
 return (
     <s.LayoutContainer>
-      <Navbar />
+      <NavHeader />
 
       <s.Content>
         <Outlet />

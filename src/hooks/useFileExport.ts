@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { type FileNameDialogHandle } from "@components/FileNameDialog";
+import { type FileNameDialogHandle } from "@components/FilenameDialog";
 
 import { exportSpreadsheet } from "../services/api/exportFile";
 import { importSpreadsheet } from "../services/api/importFile";

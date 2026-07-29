@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import { defaultTheme, darkTheme } from "./styles/themes";
+import { defaultTheme } from "./styles/themes";
 
 import { GlobalStyle } from "./styles/global";
 
@@ -10,13 +10,9 @@ import { Toaster } from "react-hot-toast";
 
 import { SpreadsheetProvider } from "@contexts/SpreadsheetContext";
 
-import { useThemeContext } from "./hooks/useThemeContext";
-
 export function App() {
-  const { themeMode } = useThemeContext();
-
   return (
-    <ThemeProvider theme={themeMode === "dark" ? darkTheme : defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
       <SpreadsheetProvider>
         <BrowserRouter>
           <Toaster />

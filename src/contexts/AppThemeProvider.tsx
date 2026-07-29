@@ -1,12 +1,9 @@
 import { ThemeProvider } from "styled-components";
-import { darkTheme, defaultTheme } from "@styles/themes";
-import { useThemeContext } from "../hooks/useThemeContext";
+import { defaultTheme } from "@styles/themes";
 
 export function AppThemeProvider({ children }: { children: React.ReactNode }) {
-  const { themeMode } = useThemeContext();
-
   return (
-    <ThemeProvider theme={themeMode === "dark" ? darkTheme : defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
       {children}
     </ThemeProvider>
   );

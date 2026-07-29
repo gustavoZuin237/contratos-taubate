@@ -3,6 +3,8 @@ import type { Control, FieldErrors } from "react-hook-form";
 import { ReadOnlyField } from "./ReadOnlyField";
 import { EditableField } from "./EditableField";
 
+import * as s from './styles'
+
 interface Props {
   control: Control<FormValues>;
   errors: FieldErrors<FormValues>;
@@ -26,6 +28,9 @@ export function FormFields({
   onFieldChange,
 }: Props) {
   return fieldEntries.map(([fieldName, config]) =>
+    config.sectionHeader ? (
+      <s.SectionHeader>{config.sectionHeaderText}</s.SectionHeader>
+    ) :
     config.readOnly ? (
       <ReadOnlyField
         key={fieldName}

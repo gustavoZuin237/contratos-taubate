@@ -5,10 +5,8 @@ import * as s from "./styles";
 type ButtonVariant =
   | "primary"
   | "secondary"
-  | "success"
   | "danger"
-  | "ghost"
-  | "accent";
+  | "ghost";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;

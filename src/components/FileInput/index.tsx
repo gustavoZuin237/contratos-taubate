@@ -5,11 +5,11 @@ import * as s from "./styles";
 import { Button } from "@components/Button";
 
 interface Props {
-  onChange: (arg0: File) => void;
+  onChange: (arg0: FileList) => void;
 }
 
 export function FileInput({ onChange }: Props) {
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [fileList, setFileList] = useState<File[]>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -19,24 +19,34 @@ export function FileInput({ onChange }: Props) {
         ref={inputRef}
         type="file"
         accept=".xlsx,.xls"
+        multiple
         onChange={(e) => {
-          const file = e.target.files?.[0];
-          if (file) {
-            setFileName(file.name);
-            onChange(file);
+          const files = e.target.files;
+
+          if (files) {
+            onChange(files);
+
+            setFileList(Array.from(files));
           }
         }}
         style={{
           display: "none",
         }}
       />
+      <s.MultipleLabelContainer>
+        {fileList.length === 0 ? (
+          <s.FileNameLabel>Nenhum arquivo selecionado</s.FileNameLabel>
+        ) : (
+          fileList.map((file) => {
+            return (
+              <s.FileNameLabel key={file.name}>{file.name}</s.FileNameLabel>
+            );
+          })
+        )}
+      </s.MultipleLabelContainer>
 
-      <s.FileNameLabel>
-        {fileName ?? "Nenhum arquivo selecionado"}
-      </s.FileNameLabel>
-
-      <Button onClick={() => inputRef.current?.click()}>
-        Importar arquivo
+      <Button variant="primary" onClick={() => inputRef.current?.click()}>
+        Importar arquivos
       </Button>
     </s.FileImportContainer>
   );

@@ -17,7 +17,7 @@ interface Props {
   onCancel: () => void;
 }
 
-export const FileNameDialog = forwardRef<FileNameDialogHandle, Props>(
+export const FilenameDialog = forwardRef<FileNameDialogHandle, Props>(
   ({ onConfirm, onCancel }, ref) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const [fileName, setFileName] = useState("");

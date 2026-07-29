@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     /* Firefox */
     * {
         scrollbar-width: thin;
-        scrollbar-color: #217346 #303030;
+        scrollbar-color: #1f3c88 #d3d3d3;
     }
 
     /* Chromium / Webkit */
@@ -25,23 +25,23 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     ::-webkit-scrollbar-track {
-        background: #1a1a1a;
+        background: #d3d3d3;
         border-radius: 999px;
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #3a3a3a;
+        background: #1f3c88;
         border-radius: 999px;
-        border: 2px solid #1a1a1a;
+        border: 2px solid #d3d3d3;
         transition: background 0.2s ease;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #555;
+        background: #3251a1;
     }
 
     ::-webkit-scrollbar-corner {
-        background: #1a1a1a;
+        background: #d3d3d3;
     }
 
     body, input, button {

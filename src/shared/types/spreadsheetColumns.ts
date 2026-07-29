@@ -18,7 +18,7 @@ export const COLUMN_LABELS: Record<keyof NormalizedRow, string> = {
 
   dataInicio: "Data de Início",
   dataVencimento: "Data de Término/Vencimento",
-  dataPagamento: "Data de Pagamento",
+  diaPagamento: "Dia de pagamento",
 
   prazoMeses: "Prazo (em meses)",
 

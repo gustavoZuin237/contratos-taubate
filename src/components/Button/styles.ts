@@ -3,10 +3,8 @@ import styled, { css } from "styled-components";
 type ButtonVariant =
   | "primary"
   | "secondary"
-  | "success"
   | "danger"
-  | "ghost"
-  | "accent";
+  | "ghost";
 
 interface ButtonProps {
   $variant: ButtonVariant;
@@ -17,6 +15,7 @@ const buttonVariants = {
     background: ${({ theme }) => theme["primary"]};
     color: ${({ theme }) => theme["text"]};
     transition: 0.3s;
+    border: 1.5px solid ${({ theme }) => theme["border"]};
 
     &:hover {
       background: ${({ theme }) => theme["primarySoft"]};
@@ -27,22 +26,10 @@ const buttonVariants = {
     background: ${({ theme }) => theme["secondary"]};
     color: ${({ theme }) => theme["text"]};
     transition: 0.3s;
+    border: 1.5px solid ${({ theme }) => theme["border"]};
 
     &:hover {
-      background: ${({ theme }) => theme["secondarySoft"]};
-    }
-  `,
-
-  success: css`
-    background: ${({ theme }) => theme["success"]};
-    color: ${({ theme }) => theme["text"]};
-    transition: 0.3s;
-
-    filter: brightness(0.9);
-
-    &:hover {
-      filter: brightness(1.15);
-      box-shadow: 0 0 0 3px rgba(2, 255, 65, 0.36);
+      background: ${({ theme }) => theme["secondary"]};
     }
   `,
 
@@ -50,6 +37,7 @@ const buttonVariants = {
     background: ${({ theme }) => theme["danger"]};
     color: ${({ theme }) => theme["text"]};
     transition: 0.3s;
+    border: 1.5px solid ${({ theme }) => theme["border"]};
 
     filter: brightness(0.95);
 
@@ -62,21 +50,11 @@ const buttonVariants = {
   ghost: css`
     background: transparent;
     color: ${({ theme }) => theme["textMuted"]};
-    border: 1px solid ${({ theme }) => theme["border"]};
+    border: 1.5px solid ${({ theme }) => theme["border"]};
 
     &:hover {
       background: ${({ theme }) => theme["hover"]};
       color: ${({ theme }) => theme["text"]};
-    }
-  `,
-
-  accent: css`
-    background: ${({ theme }) => theme["accent"]};
-    color: ${({ theme }) => theme["text"]};
-    transition: 0.3s;
-
-    &:hover {
-      background: ${({ theme }) => theme["accentSoft"]};
     }
   `,
 };
