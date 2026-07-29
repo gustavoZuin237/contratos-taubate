@@ -25,7 +25,7 @@ import type { NormalizedRow } from "@shared/types/rowFormats";
 
 import { v4 as uuidv4 } from 'uuid';
 
-document.title = "Gen-Excel";
+document.title = "Contratos | PMT";
 
 export function Home() {
   const [debugIterator, setDebugIterator] = useState(1);
@@ -108,7 +108,7 @@ export function Home() {
   }
 
   return (
-    <PageContainer title="Novo registro">
+    <PageContainer title="Registrar contrato">
       <s.InputContainer onSubmit={handleSubmit(onValidSubmit)} noValidate>
         <FormFields
           control={control}
