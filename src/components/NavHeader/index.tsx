@@ -2,11 +2,13 @@ import * as s from "./styles";
 
 import { NotebookIcon, BookBookmarkIcon } from "@phosphor-icons/react";
 
+import logo from "../../assets/city-logo.svg"
+
 export function NavHeader() {
   return (
     <s.NavbarContainer>
       <s.SideContainer>
-        <s.CityLogo src="/src/assets/city-logo.svg" width={55} height={55} />
+        <s.CityLogo src={logo} width={55} height={55} />
 
         <s.CityTextContainer>
           <s.CityTitle>PREFEITURA DE TAUBATÉ</s.CityTitle>
