@@ -54,7 +54,6 @@ type FieldType = "text" | "number" | "date" | "masked";
 type MaskType =
   | "orgao"
   | "processo"
-  | "contrato"
   | "dotacao"
   | "data"
   | "dinheiro";
