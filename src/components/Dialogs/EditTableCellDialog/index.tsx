@@ -59,9 +59,6 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
 
     function handleInputChange(rawValue: string) {
       if (onChange) {
-        // `onChange` may mask/sanitize rawValue before it's committed
-        // (e.g. currency, date masks). Validate the value it settles
-        // on, not the raw keystroke.
         onChange(rawValue, (maskedValue) => {
           setValue(maskedValue);
           setError(validate(config, maskedValue, label));

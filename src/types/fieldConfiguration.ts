@@ -22,6 +22,7 @@ export const REGEX = {
   codAplicacao: /^[0-9]{7}$/,
   qtdProduto: /^[a-zA-Z0-9 ]+$/,
   gestor: /^[\p{L}'-]+ [\p{L}'-]+$/u,
+  diaMes: /^(0[1-9]|[12][0-9]|3[01])/,
   freeText: /^.+$/,
   anyOrEmpty: /^.*$/,
 } as const;

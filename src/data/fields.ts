@@ -9,7 +9,7 @@ import {
 } from "../types/fieldConfiguration";
 
 export const FIELDS: Record<string, FieldConfig> = {
-  // "Identificação" section header
+  // * "Identificação" section header
   identificationSectionHeader: {
     label: "",
     type: "text",
@@ -188,7 +188,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     sanitize: sanitize.none,
   },
 
-  // "Data e Prazo" section header
+  // * "Data e Prazo" section header
   datesSectionHeader: {
     label: "",
     type: "text",
@@ -226,15 +226,16 @@ export const FIELDS: Record<string, FieldConfig> = {
 
   diaPagamento: {
     label: "Dia de pagamento (Previsão)",
-    placeholder: "dd/mm/aa",
+    placeholder: "xx",
     type: "text",
-    mask: "data",
+    inputMode: "numeric",
     required: false,
-    regex: REGEX.data,
+    regex: REGEX.diaMes,
     schema: optionalString(
-      z.string().regex(REGEX.data, "Formato esperado: dd/mm/aa")
+      z.string().regex(REGEX.diaMes, "Dia inválido!")
     ),
-    sanitize: sanitize.dateChars,
+    sanitize: sanitize.digitsOnly,
+    maxLength: 2,
   },
 
   prazoMeses: {
@@ -249,7 +250,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     maxLength: 2,
   },
 
-  // "Valores" section header
+  // * "Valores" section header
   valuesSectionHeader: {
     label: "",
     type: "text",
@@ -439,7 +440,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     sanitize: sanitize.none,
   },
 
-  // "Informações Adicionais" section header
+  // * "Informações Adicionais" section header
   additionalInformationSectionHeader: {
     label: "",
     type: "text",
