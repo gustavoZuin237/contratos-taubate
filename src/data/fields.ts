@@ -455,10 +455,8 @@ export const FIELDS: Record<string, FieldConfig> = {
     placeholder: "Quantidade ou produto",
     type: "text",
     required: false,
-    regex: REGEX.qtdProduto,
-    schema: requiredString(
-      z.string().regex(REGEX.qtdProduto, "Apenas letras, números e espaços")
-    ),
+    regex: REGEX.anyOrEmpty,
+    schema: optionalString(z.string().regex(REGEX.anyOrEmpty, "")),
     sanitize: sanitize.alphanumeric,
   },
 
