@@ -61,7 +61,6 @@ export const FIELDS: Record<string, FieldConfig> = {
     label: "Tipo do contrato",
     placeholder: "tipo número/ano",
     type: "masked",
-    mask: "contrato",
     required: true,
     regex: REGEX.contrato,
     schema: requiredString(

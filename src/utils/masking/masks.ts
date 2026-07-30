@@ -1,7 +1,6 @@
 export type MaskType =
   | "orgao"
   | "processo"
-  | "contrato"
   | "dotacao"
   | "data"
   | "dinheiro";
@@ -52,10 +51,6 @@ export const masks: Record<MaskType, MaskFunction> = {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
-  },
-
-  contrato: (value) => {
-    return value.replace(/[^A-Za-zÀ-Ÿ0-9\s/]/g, "").slice(0, 20);
   },
 
   dotacao: (value) => {
