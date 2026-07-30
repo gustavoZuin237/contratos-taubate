@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import * as s from "./styles";
 
 import { FormFields } from "@components/FormFields/FormFields";
 import { Button } from "@components/Button";
 import { PageContainer } from "@components/PageContainer";
-import { FilenameDialog } from "@components/FilenameDialog";
+import { FileNameDialog } from "@components/Dialogs/FileNameDialog";
+import {
+  EditCellDialog,
+  type EditCellDialogHandle,
+} from "@components/Dialogs/EditTableCellDialog";
 
 import { useContractForm } from "../../hooks/useContractForm";
 import { useFileExport } from "../../hooks/useFileExport";
 
 import { mockForm } from "../../utils/form/mockForm";
+import { FIELDS, type FormValues } from "../../data/fields";
 
 import { flexRender } from "@tanstack/react-table";
 
@@ -29,6 +34,12 @@ document.title = "Contratos | PMT";
 
 export function Home() {
   const [debugIterator, setDebugIterator] = useState(1);
+
+  const editCellDialogRef = useRef<EditCellDialogHandle>(null);
+  const [pendingEdit, setPendingEdit] = useState<{
+    rowId: string;
+    columnHeader: string;
+  } | null>(null);
 
   const {
     rows,
@@ -58,30 +69,42 @@ export function Home() {
     setDebugIterator(debugIterator + 1);
   }
 
-  function editCell(cell: any, columnHeader?: string) {
-    const currentValue = cell[columnHeader ?? ""];
-
-    const editedValue = window.prompt(
-      "Insira o novo valor para esse campo:",
-      currentValue
-    );
-
-    if (!editedValue || editedValue.trim() == "") return currentValue;
-
+  function editCell(row: NormalizedRow, columnHeader?: string) {
     if (!columnHeader) {
+      toast.error("Falha na edição!");
       return;
     }
 
+    const currentValue = (row as any)[columnHeader] ?? "";
+    const config = FIELDS[columnHeader as keyof FormValues];
+
+    setPendingEdit({ rowId: row.id, columnHeader });
+    editCellDialogRef.current?.showModal(
+      String(currentValue),
+      config?.label ?? columnHeader,
+      config
+    );
+  }
+
+  function handleEditConfirm(editedValue: string) {
+    if (!pendingEdit) return;
+
     setRows((prevRows) =>
       prevRows.map((row) =>
-        row.id === cell.id
+        row.id === pendingEdit.rowId
           ? {
               ...row,
-              [columnHeader]: editedValue,
+              [pendingEdit.columnHeader]: editedValue,
             }
           : row
       )
     );
+
+    setPendingEdit(null);
+  }
+
+  function handleEditCancel() {
+    setPendingEdit(null);
   }
 
   function duplicateRow(row: NormalizedRow) {
@@ -251,10 +274,20 @@ export function Home() {
         onChange={handleAppendFile}
       />
 
-      <FilenameDialog
+      <FileNameDialog
         ref={dialogRef}
         onConfirm={handleExport}
         onCancel={() => {}}
+      />
+
+      <EditCellDialog
+        ref={editCellDialogRef}
+        onConfirm={handleEditConfirm}
+        onCancel={handleEditCancel}
+        onChange={(rawValue, setValue) => {
+          if (!pendingEdit) return;
+          handleChange(pendingEdit.columnHeader, rawValue, setValue);
+        }}
       />
     </PageContainer>
   );

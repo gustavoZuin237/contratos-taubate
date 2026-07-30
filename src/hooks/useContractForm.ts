@@ -26,6 +26,7 @@ export function useContractForm() {
         .filter((name) => !FIELDS[name].readOnly)
         .map((name) => [name, ""])
     ) as FormValues,
+    mode: "onChange"
   });
 
   const watchedValues = useWatch({ control });

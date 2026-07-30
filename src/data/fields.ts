@@ -65,7 +65,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: true,
     regex: REGEX.contrato,
     schema: requiredString(
-      z.string().regex(REGEX.contrato, "Formato esperado: nome xx/xx")
+      z.string().regex(REGEX.contrato, "Formato esperado: tipo xx/xx")
     ),
     sanitize: sanitize.contratoChars,
   },

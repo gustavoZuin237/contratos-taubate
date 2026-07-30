@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FilenameDialogContent = styled.div`
+export const DialogContent = styled.div`
   border-radius: 12px;
   max-width: 40rem;
   margin-inline: auto;

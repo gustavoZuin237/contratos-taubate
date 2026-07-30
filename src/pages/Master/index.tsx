@@ -12,9 +12,9 @@ import { PageContainer } from "@components/PageContainer";
 import { FileInput } from "@components/FileInput";
 
 import {
-  FilenameDialog,
+  FileNameDialog,
   type FileNameDialogHandle,
-} from "@components/FilenameDialog";
+} from "@components/Dialogs/FileNameDialog";
 
 import toast from "react-hot-toast";
 
@@ -88,7 +88,7 @@ export function Master() {
         </Button>
       </s.ButtonContainer>
 
-      <FilenameDialog
+      <FileNameDialog
         ref={dialogRef}
         onConfirm={handleExport}
         onCancel={() => {

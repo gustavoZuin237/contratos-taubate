@@ -17,7 +17,7 @@ interface Props {
   onCancel: () => void;
 }
 
-export const FilenameDialog = forwardRef<FileNameDialogHandle, Props>(
+export const FileNameDialog = forwardRef<FileNameDialogHandle, Props>(
   ({ onConfirm, onCancel }, ref) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const [fileName, setFileName] = useState("");
@@ -56,7 +56,7 @@ export const FilenameDialog = forwardRef<FileNameDialogHandle, Props>(
           border: 0,
         }}
       >
-        <s.FilenameDialogContent>
+        <s.DialogContent>
           <h2>Insira um nome para o arquivo</h2>
           <Input
             value={fileName}
@@ -75,7 +75,7 @@ export const FilenameDialog = forwardRef<FileNameDialogHandle, Props>(
               Cancelar
             </Button>
           </s.ButtonContainer>
-        </s.FilenameDialogContent>
+        </s.DialogContent>
       </dialog>
     );
   }
