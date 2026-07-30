@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import * as s from "./styles";
 import { type Control, type FieldErrors, Controller } from "react-hook-form";
 
@@ -24,12 +26,16 @@ export function EditableField({
   errors,
   onChange,
 }: Props) {
+  const [isComposing, setIsComposing] = useState(false);
+
   return (
     <s.FieldWrapper>
       <s.LabelContainer>
         <s.InputLabel>{config.label}</s.InputLabel>
 
-        {config.required && <s.RequiredFieldIndicator>*</s.RequiredFieldIndicator>}
+        {config.required && (
+          <s.RequiredFieldIndicator>*</s.RequiredFieldIndicator>
+        )}
       </s.LabelContainer>
 
       <Controller
@@ -43,8 +49,20 @@ export function EditableField({
             inputMode={config.inputMode ?? undefined}
             required={config.required}
             aria-invalid={!!errors[fieldName]}
-            onChange={(e) => onChange(fieldName, e.target.value, rhfOnChange)}
             maxLength={config.maxLength}
+            onChange={(e) => {
+              if (isComposing) {
+                rhfOnChange(e.target.value);
+                return;
+              }
+
+              onChange(fieldName, e.target.value, rhfOnChange);
+            }}
+            onCompositionStart={() => setIsComposing(true)}
+            onCompositionEnd={(e) => {
+              setIsComposing(false);
+              onChange(fieldName, e.currentTarget.value, rhfOnChange);
+            }}
           />
         )}
       />
