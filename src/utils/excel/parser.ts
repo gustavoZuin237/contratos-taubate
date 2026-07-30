@@ -3,16 +3,18 @@ import * as XLSX from "xlsx";
 import type {
   NormalizedRow,
   RawSpreadsheetRow,
-} from "@shared/types/rowFormats.js";
+} from "../../types/rowFormats";
 
 import { validateColumns } from "./schemaValidator";
 
-import { normalizeRow } from "./normalizer.js";
+import { normalizeRow } from "./normalizer";
 
 export async function parseSpreadsheet(
-  buffer: Buffer
+  buffer: ArrayBuffer
 ): Promise<NormalizedRow[]> {
-  const workbook = XLSX.read(buffer);
+  const workbook = XLSX.read(buffer, {
+    type: "array",
+  });
 
   const worksheet = workbook.Sheets[workbook.SheetNames[0]];
 

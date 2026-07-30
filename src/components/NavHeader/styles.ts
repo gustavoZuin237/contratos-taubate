@@ -18,25 +18,26 @@ export const SideContainer = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
-`
+`;
 
-export const CityLogo = styled.img``
+export const CityLogo = styled.img``;
 
 export const CityTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-`
+`;
 
 export const CityTitle = styled.p`
   color: ${(props) => props.theme["primary"]};
   font-weight: bold;
-`
+  text-transform: uppercase;
+`;
 
 export const CitySubtitle = styled.p`
   color: #4e4e4e;
   font-size: 0.8rem;
-`
+`;
 
 export const LinkContainer = styled.div`
   height: 100%;

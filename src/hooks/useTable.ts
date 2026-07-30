@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import type { NormalizedRow } from "@shared/types/rowFormats";
+import type { NormalizedRow } from "../types/rowFormats";
 
 import {
   getCoreRowModel,

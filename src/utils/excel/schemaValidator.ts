@@ -1,5 +1,5 @@
-import { REQUIRED_COLUMNS } from "@shared/types/spreadsheetColumns.js";
-import type { RawSpreadsheetRow } from "@shared/types/rowFormats.js";
+import { REQUIRED_COLUMNS } from "../../types/spreadsheetColumns";
+import type { RawSpreadsheetRow } from "../../types/rowFormats";
 
 export function validateColumns(rows: RawSpreadsheetRow[]) {
   const firstRow = rows[0];

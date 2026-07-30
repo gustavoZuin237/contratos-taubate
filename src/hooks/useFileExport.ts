@@ -2,10 +2,10 @@ import { useRef } from "react";
 
 import { type FileNameDialogHandle } from "@components/Dialogs/FileNameDialog";
 
-import { exportSpreadsheet } from "../services/api/exportFile";
-import { importSpreadsheet } from "../services/api/importFile";
+import { exportSpreadsheet } from "../services/export";
+import { importSpreadsheet } from "../services/import";
 
-import type { NormalizedRow } from "@shared/types/rowFormats";
+import type { NormalizedRow } from "../types/rowFormats";
 
 import toast from "react-hot-toast";
 
@@ -18,12 +18,12 @@ export function useFileExport(
   const pendingMergedRowsRef = useRef<NormalizedRow[] | null>(null);
 
   async function handleAppendFile(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
+    const file = event.target.files;
     if (!file) return;
 
     try {
       const existingData = await importSpreadsheet(file);
-      pendingMergedRowsRef.current = [...existingData.rows, ...rows];
+      pendingMergedRowsRef.current = [...existingData[0], ...rows];
       dialogRef.current?.showModal();
     } catch {
       toast.error("Falha na importação do arquivo");

@@ -7,9 +7,9 @@ import { formSchema, type FormValues } from "../data/fields";
 
 import { masks } from "../utils/masking/masks";
 import { normalizeFormData } from "../utils/form/normalizeFormData";
-import { parseCurrency } from "@shared/utils/currency/parseCurrency";
+import { parseCurrency } from "../utils/currency/parseCurrency";
 
-import type { NormalizedRow } from "@shared/types/rowFormats";
+import type { NormalizedRow } from "../types/rowFormats";
 
 export function useContractForm() {
   const [rows, setRows] = useState<NormalizedRow[]>([]);

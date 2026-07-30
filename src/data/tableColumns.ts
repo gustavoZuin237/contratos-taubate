@@ -2,7 +2,7 @@ import { formatTableCurrency } from "../utils/table/formatTableCurrency";
 
 import type { ColumnDef } from "@tanstack/react-table";
 
-import type { NormalizedRow } from "@shared/types/rowFormats";
+import type { NormalizedRow } from "../types/rowFormats";
 
 export const columns: ColumnDef<NormalizedRow>[] = [
   {

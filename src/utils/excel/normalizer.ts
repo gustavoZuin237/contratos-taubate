@@ -1,13 +1,13 @@
 import {
   type NormalizedRow,
   type RawSpreadsheetRow,
-} from "@shared/types/rowFormats";
+} from "../../types/rowFormats";
 
-import { parseCurrency } from "@shared/utils/currency/parseCurrency.js";
-import { parseDate } from "@shared/utils/dates/parseDate.js";
-import { parseNumber } from "@shared/utils/parsing/parseNumber.js";
-import { sanitizeString } from "@shared/utils/strings/sanitizeString.js";
-import { formatDate } from "@shared/utils/dates/formatDate";
+import { parseCurrency } from "../currency/parseCurrency";
+import { parseDate } from "../dates/parseDate";
+import { parseNumber } from "../parsing/parseNumber";
+import { sanitizeString } from "../strings/sanitizeString";
+import { formatDate } from "../dates/formatDate";
 
 import { v4 as uuidv4 } from 'uuid';
 

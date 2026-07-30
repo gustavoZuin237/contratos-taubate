@@ -12,7 +12,7 @@ import {
 } from "@components/Dialogs/EditTableCellDialog";
 
 import { useContractForm } from "../../hooks/useContractForm";
-import { useFileExport } from "../../hooks/useFileExport";
+import { exportSpreadsheet } from "../../services/export";
 
 import { mockForm } from "../../utils/form/mockForm";
 import { FIELDS, type FormValues } from "../../data/fields";
@@ -26,9 +26,10 @@ import {
   RowsPlusBottomIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import type { NormalizedRow } from "@shared/types/rowFormats";
+import type { NormalizedRow } from "../../types/rowFormats";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import { useFileExport } from "../../hooks/useFileExport";
 
 document.title = "Contratos | PMT";
 
@@ -58,11 +59,37 @@ export function Home() {
     dialogRef,
     handleAppendFile,
     handleCreateNewFile,
-    handleExport,
     save,
   } = useFileExport(rows, setRows);
 
   const { table } = useTable(rows);
+
+  async function handleExport(fileName: string) {
+    try {
+      const buffer = await exportSpreadsheet(fileName, rows);
+
+      const blob = new Blob([buffer], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${fileName}.xlsx`;
+
+      link.click();
+
+      URL.revokeObjectURL(url);
+    } catch {
+      toast.error("Falha na exportação dos arquivos");
+      return;
+    }
+
+    setRows([]);
+
+    toast.success("Planilha exportada com sucesso!");
+  }
 
   function debugForm() {
     setRows([...rows, mockForm(debugIterator)]);
@@ -112,7 +139,7 @@ export function Home() {
 
     const rowToDuplicate = {
       ...rows[duplicateIndex],
-      id: uuidv4()
+      id: uuidv4(),
     };
 
     const newArray = [

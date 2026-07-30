@@ -48,4 +48,6 @@ export const COLUMN_LABELS: Record<keyof NormalizedRow, string> = {
   dataExportacao: "Data de Exportação",
 };
 
-export const REQUIRED_COLUMNS = Object.values(COLUMN_LABELS);
+export const REQUIRED_COLUMNS = Object.values(COLUMN_LABELS).filter(
+  (column) => column !== COLUMN_LABELS.id
+);
