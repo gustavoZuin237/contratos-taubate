@@ -29,7 +29,7 @@ const buttonVariants = {
     border: 1.5px solid ${({ theme }) => theme["border"]};
 
     &:hover {
-      background: ${({ theme }) => theme["secondary"]};
+      opacity: 0.9;
     }
   `,
 
