@@ -1,4 +1,4 @@
-import { formatTableCurrency } from "../utils/table/formatTableCurrency";
+import { formatCurrency } from "../utils/currency/formatCurrency";
 
 import type { ColumnDef } from "@tanstack/react-table";
 
@@ -74,67 +74,67 @@ export const columns: ColumnDef<NormalizedRow>[] = [
   {
     accessorKey: "valorTotalContrato",
     header: "Valor Total do Contrato",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valorAnual",
     header: "Valor Anual",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valorMensal",
     header: "Valor Mensal",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valor2024",
     header: "Valor de 2024",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valor2025",
     header: "Valor de 2025",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valor2026",
     header: "Valor de 2026",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valor2027",
     header: "Valor de 2027",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valor2028",
     header: "Valor de 2028",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valor2029",
     header: "Valor de 2029",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "reajusteAnual",
     header: "Reajuste Anual",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "aditivoAnual",
     header: "Aditivo Anual",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "supressaoAnual",
     header: "Supressão Anual",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "valorTotalAnual",
     header: "Valor Total Anual",
-    cell: ({ getValue }) => formatTableCurrency(getValue<number>()),
+    cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
     accessorKey: "diaPagamento",

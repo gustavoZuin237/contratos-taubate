@@ -49,7 +49,7 @@ export function Home() {
     handleSubmit,
     errors,
     valorTotalAnualDisplay,
-    allRequiredFilled,
+    requiredFieldsFilled,
     handleChange,
     onValidSubmit,
   } = useContractForm();
@@ -168,7 +168,14 @@ export function Home() {
         />
 
         <s.ButtonContainer>
-          <Button type="submit" variant="primary" disabled={!allRequiredFilled}>
+          <Button
+            type="submit"
+            variant="primary"
+            onClick={() => {
+              !requiredFieldsFilled &&
+                toast.error("Verifique os campos obrigatórios!");
+            }}
+          >
             Adicionar linha
           </Button>
           <Button

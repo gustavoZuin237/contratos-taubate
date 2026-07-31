@@ -42,7 +42,7 @@ export function useContractForm() {
       ? masks.dinheiro(valorTotalAnual.toFixed(2))
       : "Valor inválido";
 
-  const allRequiredFilled = useMemo(
+  const requiredFieldsFilled = useMemo(
     () =>
       Object.entries(FIELDS)
         .filter(([, config]) => config.required && !config.readOnly)
@@ -84,7 +84,7 @@ export function useContractForm() {
     reset,
     errors,
     valorTotalAnualDisplay,
-    allRequiredFilled,
+    requiredFieldsFilled,
     handleChange,
     onValidSubmit,
   };
