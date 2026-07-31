@@ -27,17 +27,6 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
     const [config, setConfig] = useState<FieldConfig | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    useImperativeHandle(ref, () => ({
-      showModal: (initialValue, fieldLabel, fieldConfig) => {
-        setValue(initialValue);
-        setLabel(fieldLabel);
-        setConfig(fieldConfig ?? null);
-        setError(null);
-        dialogRef.current?.showModal();
-      },
-      close: () => dialogRef.current?.close(),
-    }));
-
     function validate(
       configArg: FieldConfig | null,
       rawValue: string,
@@ -56,6 +45,26 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
 
       return null;
     }
+
+    useImperativeHandle(ref, () => ({
+      showModal: (initialValue, fieldLabel, fieldConfig) => {
+        setLabel(fieldLabel);
+        setConfig(fieldConfig ?? null);
+
+        if (onChange) {
+          onChange(initialValue, (maskedValue) => {
+            setValue(maskedValue);
+            setError(validate(fieldConfig ?? null, maskedValue, fieldLabel));
+          });
+        } else {
+          setValue(initialValue);
+          setError(validate(fieldConfig ?? null, initialValue, fieldLabel));
+        }
+
+        dialogRef.current?.showModal();
+      },
+      close: () => dialogRef.current?.close(),
+    }));
 
     function handleInputChange(rawValue: string) {
       if (onChange) {
@@ -79,11 +88,13 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
       }
 
       onConfirm(value);
+      setValue("")
       dialogRef.current?.close();
     }
 
     function handleCancel() {
       onCancel();
+      setValue("")
       dialogRef.current?.close();
     }
 
