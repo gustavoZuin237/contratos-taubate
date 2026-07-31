@@ -54,20 +54,11 @@ export function useFileExport(
     setRows([]);
   }
 
-  function save() {
-    if (!rows.length) {
-      toast.error("Nenhuma linha para exportar");
-      return;
-    }
-    fileInputRef.current?.click();
-  }
-
   return {
     fileInputRef,
     dialogRef,
     handleAppendFile,
     handleCreateNewFile,
-    handleExport,
-    save,
+    handleExport
   };
 }

@@ -54,13 +54,8 @@ export function Home() {
     onValidSubmit,
   } = useContractForm();
 
-  const {
-    fileInputRef,
-    dialogRef,
-    handleAppendFile,
-    handleCreateNewFile,
-    save,
-  } = useFileExport(rows, setRows);
+  const { fileInputRef, dialogRef, handleAppendFile, handleCreateNewFile } =
+    useFileExport(rows, setRows);
 
   const { table } = useTable(rows);
 
@@ -190,7 +185,9 @@ export function Home() {
             type="button"
             variant="secondary"
             disabled={rows.length === 0}
-            onClick={save}
+            onClick={() => {
+              rows.length > 0 && fileInputRef.current?.click();
+            }}
           >
             Atualizar arquivo
           </Button>

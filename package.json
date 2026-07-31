@@ -1,7 +1,7 @@
 {
   "name": "formulario_contratos",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -31,7 +31,6 @@
     "@sinclair/typebox": "^0.34.49",
     "@tanstack/react-table": "^8.21.3",
     "@types/styled-components": "^5.1.36",
-    "crypto": "^1.0.1",
     "date-fns": "^4.3.0",
     "exceljs": "^4.4.0",
     "react": "^19.2.6",
@@ -39,7 +38,6 @@
     "react-hook-form": "^7.76.0",
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.15.1",
-    "recharts": "^3.8.1",
     "styled-components": "^6.4.1",
     "uuid": "^14.0.1",
     "xlsx": "^0.18.5",
