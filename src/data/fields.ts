@@ -158,12 +158,12 @@ export const FIELDS: Record<string, FieldConfig> = {
     placeholder: "Nome e sobrenome do gestor do contrato",
     type: "text",
     required: true,
-    regex: REGEX.gestor,
+    regex: REGEX.fullName,
     schema: optionalString(
       z
         .string()
         .regex(
-          REGEX.gestor,
+          REGEX.fullName,
           "Formato incorreto. O formato esperado é: Nome Sobrenome"
         )
     ),
@@ -175,12 +175,12 @@ export const FIELDS: Record<string, FieldConfig> = {
     placeholder: "Nome e sobrenome do responsável pelo preenchimento",
     type: "text",
     required: true,
-    regex: REGEX.gestor, // reutilized the regex and sanitization rules
+    regex: REGEX.fullName,
     schema: optionalString(
       z
         .string()
         .regex(
-          REGEX.gestor,
+          REGEX.fullName,
           "Formato incorreto. O formato esperado é: Nome Sobrenome"
         )
     ),
