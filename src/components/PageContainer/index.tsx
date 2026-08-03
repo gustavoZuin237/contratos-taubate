@@ -9,11 +9,7 @@ interface Props {
 export function PageContainer({ title, children }: Props) {
   return (
     <s.PageContainer>
-      {
-        title && (
-          <s.PageTitle>{title}</s.PageTitle>
-        )
-      }
+      {title && <s.PageTitle>{title}</s.PageTitle>}
       {children}
     </s.PageContainer>
   );

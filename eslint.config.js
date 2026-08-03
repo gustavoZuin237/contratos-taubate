@@ -9,13 +9,11 @@ import { fileURLToPath } from "node:url";
 
 import eslintConfigPrettier from "eslint-config-prettier";
 
-const __dirname = path.dirname(
-  fileURLToPath(import.meta.url)
-);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default tseslint.config(
   {
-    ignores: ["dist"],
+    ignores: ["dist", "node_modules"],
   },
 
   js.configs.recommended,

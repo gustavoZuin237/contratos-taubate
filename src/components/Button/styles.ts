@@ -1,10 +1,6 @@
 import styled, { css } from "styled-components";
 
-type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "ghost";
+type ButtonVariant = "primary" | "secondary" | "danger" | "ghost";
 
 interface ButtonProps {
   $variant: ButtonVariant;

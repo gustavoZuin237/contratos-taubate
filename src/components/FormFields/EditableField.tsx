@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 import * as s from "./styles";
 import { type Control, type FieldErrors, Controller } from "react-hook-form";

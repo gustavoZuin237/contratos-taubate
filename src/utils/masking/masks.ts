@@ -1,9 +1,4 @@
-export type MaskType =
-  | "orgao"
-  | "processo"
-  | "dotacao"
-  | "data"
-  | "dinheiro";
+export type MaskType = "orgao" | "processo" | "dotacao" | "data" | "dinheiro";
 
 type MaskFunction = (value: string) => string;
 

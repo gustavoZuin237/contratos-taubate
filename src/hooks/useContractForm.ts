@@ -26,7 +26,7 @@ export function useContractForm() {
         .filter((name) => !FIELDS[name].readOnly)
         .map((name) => [name, ""])
     ) as FormValues,
-    mode: "onChange"
+    mode: "onChange",
   });
 
   const watchedValues = useWatch({ control });
@@ -73,7 +73,7 @@ export function useContractForm() {
 
   function onValidSubmit(data: FormValues) {
     setRows((prev) => [...prev, normalizeFormData(data)]);
-    reset()
+    reset();
   }
 
   return {

@@ -230,9 +230,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     inputMode: "numeric",
     required: false,
     regex: REGEX.diaMes,
-    schema: optionalString(
-      z.string().regex(REGEX.diaMes, "Dia inválido!")
-    ),
+    schema: optionalString(z.string().regex(REGEX.diaMes, "Dia inválido!")),
     sanitize: sanitize.digitsOnly,
     maxLength: 2,
   },

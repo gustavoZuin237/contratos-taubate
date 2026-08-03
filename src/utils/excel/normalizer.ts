@@ -9,7 +9,7 @@ import { parseNumber } from "../parsing/parseNumber";
 import { sanitizeString } from "../strings/sanitizeString";
 import { formatDate } from "../dates/formatDate";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export function normalizeRow(row: RawSpreadsheetRow): NormalizedRow {
   return {

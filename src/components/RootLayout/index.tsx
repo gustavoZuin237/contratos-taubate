@@ -5,7 +5,7 @@ import * as s from "./styles";
 import { NavHeader } from "@components/NavHeader";
 
 export function RootLayout() {
-return (
+  return (
     <s.LayoutContainer>
       <NavHeader />
 

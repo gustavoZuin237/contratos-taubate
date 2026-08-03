@@ -36,7 +36,7 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
         const result = configArg.schema.safeParse(rawValue);
         return result.success
           ? null
-          : result.error.issues[0]?.message ?? "Valor inválido";
+          : (result.error.issues[0]?.message ?? "Valor inválido");
       }
 
       if (configArg?.required && !rawValue.trim()) {
@@ -88,13 +88,13 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
       }
 
       onConfirm(value);
-      setValue("")
+      setValue("");
       dialogRef.current?.close();
     }
 
     function handleCancel() {
       onCancel();
-      setValue("")
+      setValue("");
       dialogRef.current?.close();
     }
 

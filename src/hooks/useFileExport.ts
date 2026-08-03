@@ -59,6 +59,6 @@ export function useFileExport(
     dialogRef,
     handleAppendFile,
     handleCreateNewFile,
-    handleExport
+    handleExport,
   };
 }

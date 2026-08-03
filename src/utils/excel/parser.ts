@@ -1,9 +1,6 @@
 import * as XLSX from "xlsx";
 
-import type {
-  NormalizedRow,
-  RawSpreadsheetRow,
-} from "../../types/rowFormats";
+import type { NormalizedRow, RawSpreadsheetRow } from "../../types/rowFormats";
 
 import { validateColumns } from "./schemaValidator";
 

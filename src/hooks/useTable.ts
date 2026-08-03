@@ -13,7 +13,7 @@ import { columns } from "../data/tableColumns";
 
 export function useTable(importedSheet: NormalizedRow[]) {
   const memoData = useMemo(() => {
-    return importedSheet
+    return importedSheet;
   }, [importedSheet]);
 
   const table = useReactTable({

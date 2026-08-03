@@ -15,12 +15,12 @@ export const LabelContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-`
+`;
 
 export const RequiredFieldIndicator = styled.p`
   color: ${(props) => props.theme["danger"]};
   font-weight: bold;
-`
+`;
 
 export const ErrorMessage = styled.span`
   color: red;
@@ -32,4 +32,4 @@ export const SectionHeader = styled.p`
   color: ${(props) => props.theme["primary"]};
   font-size: 1.2rem;
   text-transform: uppercase;
-`
+`;

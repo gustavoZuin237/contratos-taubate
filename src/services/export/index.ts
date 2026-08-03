@@ -3,14 +3,14 @@ import ExcelJS from "exceljs";
 import type { NormalizedRow } from "../../types/rowFormats";
 import { formatRow } from "../../utils/excel/formatRow";
 
-import { formatDate } from "../../utils/dates/formatDate"
+import { formatDate } from "../../utils/dates/formatDate";
 
 export async function exportSpreadsheet(
   fileName: string,
   data: NormalizedRow[]
 ) {
   if (!data || !fileName) {
-    throw new Error("Arquivo sem nome ou dados")
+    throw new Error("Arquivo sem nome ou dados");
   }
 
   const workbook = new ExcelJS.Workbook();
@@ -27,7 +27,7 @@ export async function exportSpreadsheet(
   });
 
   if (!rowsWithTimestamp.length) {
-    throw new Error("Falha na exportação")
+    throw new Error("Falha na exportação");
   }
 
   const headers = Object.keys(rowsWithTimestamp[0]);
@@ -94,8 +94,8 @@ export async function exportSpreadsheet(
   try {
     buffer = await workbook.xlsx.writeBuffer();
   } catch {
-    throw new Error("Falha na geração de arquivo")
+    throw new Error("Falha na geração de arquivo");
   }
 
-  return buffer
+  return buffer;
 }

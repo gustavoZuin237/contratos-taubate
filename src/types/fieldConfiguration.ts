@@ -13,7 +13,8 @@ export const REGEX = {
   orgao: /^[0-9]{2}\.[0-9]{2}\.[0-9]{2}$/,
   processo: /^[0-9]{1,6}\/[0-9]{2}$/,
   contrato: /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+\s[0-9]+\/[0-9]{2}$/,
-  dotacao: /^[0-9]{6}\.[0-9]{4}\.[0-9]{2}\.[0-9]{2}\.[0-9]{3}\.[0-9]{4}\.[0-9]{4}$/,
+  dotacao:
+    /^[0-9]{6}\.[0-9]{4}\.[0-9]{2}\.[0-9]{2}\.[0-9]{3}\.[0-9]{4}\.[0-9]{4}$/,
   data: /^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{2}$/,
   dinheiro: /^(\d{1,3}(\.\d{3})*|\d+)(,\d{0,2})?$/,
   numeric: /^[0-9]+$/,
@@ -51,12 +52,7 @@ export const sanitize = {
 
 type FieldType = "text" | "number" | "date" | "masked";
 
-type MaskType =
-  | "orgao"
-  | "processo"
-  | "dotacao"
-  | "data"
-  | "dinheiro";
+type MaskType = "orgao" | "processo" | "dotacao" | "data" | "dinheiro";
 
 type SanitizeFunction = (v: string) => string;
 
@@ -75,6 +71,6 @@ export interface FieldConfig {
   schema?: AnyZodSchema;
   sanitize: SanitizeFunction;
   maxLength?: number;
-  sectionHeader?: boolean
-  sectionHeaderText?: string
+  sectionHeader?: boolean;
+  sectionHeaderText?: string;
 }
