@@ -22,6 +22,7 @@
     "@sinclair/typebox": "^0.34.49",
     "@tanstack/react-table": "^8.21.3",
     "@types/styled-components": "^5.1.36",
+    "@vitejs/plugin-react": "^6.0.5",
     "date-fns": "^4.3.0",
     "exceljs": "^4.4.0",
     "react": "^19.2.6",
