@@ -24,6 +24,9 @@ export function useFileExport(
     try {
       const existingData = await importSpreadsheet(file);
       pendingMergedRowsRef.current = [...existingData[0], ...rows];
+
+      setRows(pendingMergedRowsRef.current)
+
       dialogRef.current?.showModal();
     } catch {
       toast.error("Falha na importação do arquivo");

@@ -186,7 +186,7 @@ export function Home() {
             variant="secondary"
             disabled={rows.length === 0}
             onClick={() => {
-              rows.length > 0 && fileInputRef.current?.click();
+              fileInputRef.current?.click();
             }}
           >
             Atualizar arquivo
