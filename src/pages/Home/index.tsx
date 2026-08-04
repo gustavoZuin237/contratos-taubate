@@ -179,7 +179,7 @@ export function Home() {
             disabled={rows.length === 0}
             onClick={handleCreateNewFile}
           >
-            Novo arquivo
+            Salvar arquivo
           </Button>
           <Button
             type="button"
@@ -208,6 +208,7 @@ export function Home() {
             variant="danger"
             onClick={() => {
               setRows([]);
+              setDebugIterator(1)
             }}
           >
             Limpar
