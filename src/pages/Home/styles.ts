@@ -110,3 +110,14 @@ export const RowCount = styled.div`
     align-items: center !important;
   }
 `;
+
+export const RowCountTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export const Disclaimer = styled.p`
+  font-size: 0.9rem;
+  color: ${(props) => props.theme["text"]};
+  font-style: italic;
+`

@@ -1,6 +1,6 @@
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 import { FIELDS } from "../data/fields";
 import { formSchema, type FormValues } from "../data/fields";
@@ -11,8 +11,19 @@ import { parseCurrency } from "../utils/currency/parseCurrency";
 
 import type { NormalizedRow } from "../types/rowFormats";
 
+type StoredRows = {
+  rows: NormalizedRow[];
+  savedAt: string;
+};
+
+const STORAGE_KEY = "contract_rows";
+
 export function useContractForm() {
-  const [rows, setRows] = useState<NormalizedRow[]>([]);
+  const [rows, setRows] = useState<NormalizedRow[]>(() => loadRows());
+
+  useEffect(() => {
+    saveRows(rows);
+  }, [rows]);
 
   const {
     control,
@@ -76,6 +87,34 @@ export function useContractForm() {
     reset();
   }
 
+  // localStorage functions to persist tables temporarily
+  function loadRows(): NormalizedRow[] {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (!saved) return [];
+
+    try {
+      const data: StoredRows = JSON.parse(saved);
+
+      return data.rows;
+    } catch {
+      return [];
+    }
+  }
+
+  function saveRows(rows: NormalizedRow[]) {
+    const data: StoredRows = {
+      rows,
+      savedAt: new Date().toISOString(),
+    };
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function clearRows() {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+
   return {
     rows,
     setRows,
@@ -87,5 +126,8 @@ export function useContractForm() {
     requiredFieldsFilled,
     handleChange,
     onValidSubmit,
+    saveRows,
+    loadRows,
+    clearRows,
   };
 }

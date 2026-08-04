@@ -52,6 +52,7 @@ export function Home() {
     requiredFieldsFilled,
     handleChange,
     onValidSubmit,
+    clearRows
   } = useContractForm();
 
   const { fileInputRef, dialogRef, handleAppendFile, handleCreateNewFile } =
@@ -202,13 +203,21 @@ export function Home() {
 
       {rows.length > 0 && (
         <s.RowCount>
-          {rows.length}{" "}
-          {rows.length === 1 ? "linha adicionada" : "linhas adicionadas"}
+          <s.RowCountTextContainer>
+            {`${rows.length} ${rows.length === 1 ? "linha adicionada" : "linhas adicionadas"}`}
+
+            <s.Disclaimer>
+              Nota: a tabela abaixo é uma <b>previsão</b> com dados sujeitos a perda. Para salvar os dados
+              preenchidos, clique em "Salvar arquivo".
+            </s.Disclaimer>
+          </s.RowCountTextContainer>
+
           <Button
             variant="danger"
             onClick={() => {
               setRows([]);
-              setDebugIterator(1)
+              setDebugIterator(1);
+              clearRows()
             }}
           >
             Limpar
