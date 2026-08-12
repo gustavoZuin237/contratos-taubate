@@ -264,7 +264,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     type: "text",
     inputMode: "decimal",
     mask: "dinheiro",
-    required: false,
+    required: true,
     regex: REGEX.dinheiro,
     schema: optionalString(
       z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
@@ -278,7 +278,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     type: "text",
     inputMode: "decimal",
     mask: "dinheiro",
-    required: false,
+    required: true,
     regex: REGEX.dinheiro,
     schema: optionalString(
       z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
