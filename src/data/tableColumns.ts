@@ -78,7 +78,7 @@ export const columns: ColumnDef<NormalizedRow>[] = [
   },
   {
     accessorKey: "valorAnual",
-    header: "Valor Anual",
+    header: "Valor Anual no Início do Contrato",
     cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {

@@ -266,9 +266,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     mask: "dinheiro",
     required: true,
     regex: REGEX.dinheiro,
-    schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
-    ),
+    schema: requiredString(z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")),
     sanitize: sanitize.currency,
   },
 
@@ -280,9 +278,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     mask: "dinheiro",
     required: true,
     regex: REGEX.dinheiro,
-    schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
-    ),
+    schema: requiredString(z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")),
     sanitize: sanitize.currency,
   },
 
@@ -295,7 +291,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
@@ -309,7 +305,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
@@ -323,7 +319,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
@@ -336,9 +332,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     mask: "dinheiro",
     required: true,
     regex: REGEX.dinheiro,
-    schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
-    ),
+    schema: requiredString(z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")),
     sanitize: sanitize.currency,
   },
 
@@ -351,7 +345,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
@@ -365,7 +359,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
@@ -379,7 +373,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
@@ -393,7 +387,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
@@ -407,7 +401,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
@@ -421,7 +415,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     required: false,
     regex: REGEX.dinheiro,
     schema: optionalString(
-      z.string().regex(REGEX.dinheiro, "Formato esperado: 1.000,00")
+      z.string().regex(REGEX.dinheiro, "Formato esperado: xx.xxx,xx")
     ),
     sanitize: sanitize.currency,
   },
