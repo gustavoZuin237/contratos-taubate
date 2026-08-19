@@ -73,4 +73,5 @@ export interface FieldConfig {
   maxLength?: number;
   sectionHeader?: boolean;
   sectionHeaderText?: string;
+  isDropdown?: boolean;
 }

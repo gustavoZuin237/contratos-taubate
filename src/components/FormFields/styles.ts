@@ -33,3 +33,18 @@ export const SectionHeader = styled.p`
   font-size: 1.2rem;
   text-transform: uppercase;
 `;
+
+export const StyledSelect = styled.select`
+  padding: 0.85rem 1rem;
+  border: 1px solid;
+  border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+export const DropdownOption = styled.option`
+  background-color: ${(props) => props.theme["background"]};
+  border-radius: 8px;
+`

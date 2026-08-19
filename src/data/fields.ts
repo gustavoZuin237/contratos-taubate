@@ -19,6 +19,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     sectionHeader: true,
     sectionHeaderText: "Identificação",
   },
+  
   secretaria: {
     label: "Secretaria",
     placeholder: "Nome da secretaria",
@@ -29,6 +30,7 @@ export const FIELDS: Record<string, FieldConfig> = {
       z.string().regex(REGEX.freeText, "Preencha o nome da secretaria")
     ),
     sanitize: sanitize.none,
+    isDropdown: true
   },
 
   orgao: {
