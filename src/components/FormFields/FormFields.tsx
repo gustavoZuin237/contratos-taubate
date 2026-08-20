@@ -1,4 +1,4 @@
-import { FIELDS, type FormValues } from "../../data/fields";
+import { FIELDS, type FormValues } from "@data/fields";
 import type { Control, FieldErrors } from "react-hook-form";
 import { ReadOnlyField } from "./ReadOnlyField";
 import { EditableField } from "./EditableField";

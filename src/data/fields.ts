@@ -6,7 +6,7 @@ import {
   requiredString,
   optionalString,
   sanitize,
-} from "../types/fieldConfiguration";
+} from "../interfaces/fieldConfiguration";
 
 export const FIELDS: Record<string, FieldConfig> = {
   // * "Identificação" section header

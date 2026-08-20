@@ -26,12 +26,15 @@
 
     "paths": {
       "@assets": ["./src/assets"],
-      "@styles/*": ["./src/styles/*"],
       "@components/*": ["./src/components/*"],
-      "@pages/*": ["./src/pages/*"],
       "@contexts/*": ["./src/contexts/*"],
-      "@types/*": ["./src/types/*"],
       "@data/*": ["./src/data/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@services/*": ["./src/services/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@utils/*": ["./src/utils/*"],
     }
   },
   "include": ["src"]

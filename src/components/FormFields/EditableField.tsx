@@ -4,8 +4,8 @@ import * as s from "./styles";
 import { type Control, type FieldErrors, Controller } from "react-hook-form";
 
 import { Input } from "@components/Input";
-import type { FieldConfig } from "../../types/fieldConfiguration";
-import type { FormValues } from "../../data/fields";
+import type { FieldConfig } from "../../interfaces/fieldConfiguration";
+import type { FormValues } from "@data/fields";
 
 import { secretariaOptions } from "@data/dropdownOptions"
 

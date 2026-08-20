@@ -1,8 +1,8 @@
-import type { FormValues } from "../../data/fields";
+import type { FormValues } from "@data/fields";
 
-import type { NormalizedRow } from "../../types/rowFormats";
+import type { NormalizedRow } from "../../interfaces/rowFormats";
 
-import { parseCurrency } from "../currency/parseCurrency";
+import { parseCurrency } from "@utils/currency/parseCurrency";
 
 export function normalizeFormData(data: FormValues) {
   const normalizedRow: NormalizedRow = {

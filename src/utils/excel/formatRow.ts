@@ -1,9 +1,9 @@
-import { COLUMN_LABELS } from "../../types/spreadsheetColumns.js";
+import { COLUMN_LABELS } from "../../interfaces/spreadsheetColumns.js";
 
-import { type NormalizedRow } from "../../types/rowFormats.js";
+import { type NormalizedRow } from "../../interfaces/rowFormats.js";
 
-import { formatCurrency } from "../../utils/currency/formatCurrency.js";
-import { titleCase } from "../../utils/strings/titleCase.js";
+import { formatCurrency } from "@utils/currency/formatCurrency.js";
+import { titleCase } from "@utils/strings/titleCase.js";
 
 export function formatRow(row: NormalizedRow) {
   return {

@@ -11,25 +11,27 @@ import {
   type EditCellDialogHandle,
 } from "@components/Dialogs/EditTableCellDialog";
 
-import { useContractForm } from "../../hooks/useContractForm";
-import { exportSpreadsheet } from "../../services/export";
+import { useContractForm } from "@hooks/useContractForm";
+import { exportSpreadsheet } from "@services/export";
 
-import { mockForm } from "../../utils/form/mockForm";
-import { FIELDS, type FormValues } from "../../data/fields";
+import { mockForm } from "@utils/form/mockForm";
+import { FIELDS, type FormValues } from "@data/fields";
 
 import { flexRender } from "@tanstack/react-table";
 
-import { useTable } from "../../hooks/useTable";
+import { useTable } from "@hooks/useTable";
+
 import toast from "react-hot-toast";
 import {
   PencilIcon,
   RowsPlusBottomIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import type { NormalizedRow } from "../../types/rowFormats";
+
+import type { NormalizedRow } from "@interfaces/rowFormats";
 
 import { v4 as uuidv4 } from "uuid";
-import { useFileExport } from "../../hooks/useFileExport";
+import { useFileExport } from "@hooks/useFileExport";
 
 document.title = "Contratos | PMT";
 

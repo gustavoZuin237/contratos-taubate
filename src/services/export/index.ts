@@ -1,9 +1,9 @@
 import ExcelJS from "exceljs";
 
-import type { NormalizedRow } from "../../types/rowFormats";
-import { formatRow } from "../../utils/excel/formatRow";
+import type { NormalizedRow } from "../../interfaces/rowFormats";
+import { formatRow } from "@utils/excel/formatRow";
 
-import { formatDate } from "../../utils/dates/formatDate";
+import { formatDate } from "@utils/dates/formatDate";
 
 export async function exportSpreadsheet(
   fileName: string,

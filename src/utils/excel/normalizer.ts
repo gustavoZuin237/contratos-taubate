@@ -1,13 +1,13 @@
 import {
   type NormalizedRow,
   type RawSpreadsheetRow,
-} from "../../types/rowFormats";
+} from "../../interfaces/rowFormats";
 
-import { parseCurrency } from "../currency/parseCurrency";
-import { parseDate } from "../dates/parseDate";
-import { parseNumber } from "../parsing/parseNumber";
-import { sanitizeString } from "../strings/sanitizeString";
-import { formatDate } from "../dates/formatDate";
+import { parseCurrency } from "@utils/currency/parseCurrency";
+import { parseDate } from "@utils/dates/parseDate";
+import { parseNumber } from "@utils/parsing/parseNumber";
+import { sanitizeString } from "@utils/strings/sanitizeString";
+import { formatDate } from "@utils/dates/formatDate";
 
 import { v4 as uuidv4 } from "uuid";
 
