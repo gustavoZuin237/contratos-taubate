@@ -6,7 +6,7 @@ import { Button } from "@components/Button";
 import toast from "react-hot-toast";
 
 import * as s from "./styles";
-import type { FieldConfig } from "../../../interfaces/fieldConfiguration";
+import type { FieldConfig } from "@interfaces/fieldConfiguration";
 
 export interface EditCellDialogHandle {
   showModal: (value: string, label: string, config?: FieldConfig) => void;

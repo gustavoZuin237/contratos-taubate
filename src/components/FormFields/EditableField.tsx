@@ -4,7 +4,9 @@ import * as s from "./styles";
 import { type Control, type FieldErrors, Controller } from "react-hook-form";
 
 import { Input } from "@components/Input";
-import type { FieldConfig } from "../../interfaces/fieldConfiguration";
+import { Dropdown } from "@components/Dropdown";
+
+import type { FieldConfig } from "@interfaces/fieldConfiguration";
 import type { FormValues } from "@data/fields";
 
 import { secretariaOptions } from "@data/dropdownOptions"
@@ -30,6 +32,17 @@ export function EditableField({
 }: Props) {
   const [isComposing, setIsComposing] = useState(false);
 
+  let dropdownOptions: string[];
+
+  switch (config.label) {
+    case "Secretaria":
+      dropdownOptions = secretariaOptions;
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <s.FieldWrapper>
       <s.LabelContainer>
@@ -45,16 +58,17 @@ export function EditableField({
         control={control}
         render={({ field: { onChange: rhfOnChange, value } }) => (
           config.isDropdown ? (
-            config.label == "Secretaria" ? (
-              <s.StyledSelect onChange={(e) => { onChange(fieldName, e.target.value, rhfOnChange); }}>
-                {
-                  secretariaOptions.map((option) => (
-                    <s.DropdownOption value={option}>{option}</s.DropdownOption>
-                  )
-                  )
-                }
-              </s.StyledSelect>
-            ) : <></> // Add more dropdown options here, if needed
+            <Dropdown
+              options={dropdownOptions}
+              value={(value as string) ?? ""}
+              onChange={(selectedValue) => {
+                onChange(
+                  fieldName,
+                  selectedValue,
+                  rhfOnChange
+                );
+              }}
+            />
           ) : (
             <Input
               value={(value as string) ?? ""}

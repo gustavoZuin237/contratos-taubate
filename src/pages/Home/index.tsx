@@ -62,6 +62,10 @@ export function Home() {
 
   const { table } = useTable(rows);
 
+  const dropdownFieldKeys = [
+    "secretaria"
+  ]
+
   async function handleExport(fileName: string) {
     try {
       const buffer = await exportSpreadsheet(fileName, rows);
@@ -118,9 +122,9 @@ export function Home() {
       prevRows.map((row) =>
         row.id === pendingEdit.rowId
           ? {
-              ...row,
-              [pendingEdit.columnHeader]: editedValue,
-            }
+            ...row,
+            [pendingEdit.columnHeader]: editedValue,
+          }
           : row
       )
     );
@@ -235,7 +239,7 @@ export function Home() {
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) =>
                     header.isPlaceholder ||
-                    header.column.columnDef.header ===
+                      header.column.columnDef.header ===
                       "Data de exportação" ? null : (
                       <s.StyledTableHeader key={header.id}>
                         {flexRender(
@@ -257,23 +261,28 @@ export function Home() {
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell) =>
                     "accessorKey" in cell.column.columnDef &&
-                    cell.column.columnDef.accessorKey ==
+                      cell.column.columnDef.accessorKey ==
                       "dataExportacao" ? null : (
                       <s.StyledTableCell key={cell.id}>
-                        <s.TableIconButton
-                          onClick={() => {
-                            if ("accessorKey" in cell.column.columnDef) {
-                              editCell(
-                                cell.row.original,
-                                cell.column.columnDef.accessorKey
-                              );
-                            } else {
-                              toast.error("Falha na edição!");
-                            }
-                          }}
-                        >
-                          <PencilIcon size={16} />
-                        </s.TableIconButton>
+                        {
+                          "accessorKey" in cell.column.columnDef && !dropdownFieldKeys.includes(cell.column.columnDef.accessorKey) ? (
+                            <s.TableIconButton
+                              onClick={() => {
+                                if ("accessorKey" in cell.column.columnDef) {
+                                  editCell(
+                                    cell.row.original,
+                                    cell.column.columnDef.accessorKey
+                                  );
+                                } else {
+                                  toast.error("Falha na edição!");
+                                }
+                              }}
+                            >
+                              <PencilIcon size={16} />
+                            </s.TableIconButton>
+                          ) : <></>
+                        }
+
 
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -320,7 +329,7 @@ export function Home() {
       <FileNameDialog
         ref={dialogRef}
         onConfirm={handleExport}
-        onCancel={() => {}}
+        onCancel={() => { }}
       />
 
       <EditCellDialog
