@@ -9,7 +9,7 @@ import { masks } from "@utils/masking/masks";
 import { normalizeFormData } from "@utils/form/normalizeFormData";
 import { parseCurrency } from "@utils/currency/parseCurrency";
 
-import type { NormalizedRow } from "../interfaces/rowFormats";
+import type { NormalizedRow } from "@interfaces/rowFormats";
 
 type StoredRows = {
   rows: NormalizedRow[];

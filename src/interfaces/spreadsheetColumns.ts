@@ -6,6 +6,7 @@ export const COLUMN_LABELS: Record<keyof NormalizedRow, string> = {
   orgao: "Órgão",
   numeroProcesso: "N° do Processo",
   tipoContrato: "Tipo do contrato",
+  numeroContrato: "Número do contrato",
   fornecedor: "Fornecedor",
   objetoContrato: "Objeto do contrato",
 

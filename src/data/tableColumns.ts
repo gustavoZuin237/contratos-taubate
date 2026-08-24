@@ -22,6 +22,10 @@ export const columns: ColumnDef<NormalizedRow>[] = [
     header: "Tipo do contrato",
   },
   {
+    accessorKey: "numeroContrato",
+    header: "Número do contrato",
+  },
+  {
     accessorKey: "fornecedor",
     header: "Fornecedor",
   },

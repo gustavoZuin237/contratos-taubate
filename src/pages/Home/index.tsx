@@ -63,7 +63,8 @@ export function Home() {
   const { table } = useTable(rows);
 
   const dropdownFieldKeys = [
-    "secretaria"
+    "secretaria",
+    "tipoContrato"
   ]
 
   async function handleExport(fileName: string) {

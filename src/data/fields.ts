@@ -6,7 +6,7 @@ import {
   requiredString,
   optionalString,
   sanitize,
-} from "../interfaces/fieldConfiguration";
+} from "@interfaces/fieldConfiguration";
 
 export const FIELDS: Record<string, FieldConfig> = {
   // * "Identificação" section header
@@ -19,18 +19,30 @@ export const FIELDS: Record<string, FieldConfig> = {
     sectionHeader: true,
     sectionHeaderText: "Identificação",
   },
-  
+
   secretaria: {
     label: "Secretaria",
-    placeholder: "Nome da secretaria",
-    type: "text",
     required: true,
-    regex: REGEX.freeText,
-    schema: requiredString(
-      z.string().regex(REGEX.freeText, "Preencha o nome da secretaria")
-    ),
-    sanitize: sanitize.none,
-    isDropdown: true
+    isDropdown: true,
+    options: [
+      "Controladoria-Geral do Município",
+      "Secretaria de Administração",
+      "Secretaria de Cultura e Economia Criativa",
+      "Secretaria de Desenvolvimento e Inclusão Social",
+      "Secretaria de Desenvolvimento, Inovação e Turismo",
+      "Secretaria de Educação",
+      "Secretaria de Esportes, Lazer e Qualidade de Vida",
+      "Secretaria da Fazenda",
+      "Secretaria de Governo e Relações Institucionais",
+      "Secretaria de Habitação",
+      "Secretaria de Meio Ambiente e do Bem-Estar Animal",
+      "Secretaria de Mobilidade Urbana",
+      "Secretaria de Obras",
+      "Secretaria de Planejamento Urbano e Habitação",
+      "Secretaria de Saúde",
+      "Secretaria de Segurança e Ordem Pública",
+      "Secretaria de Serviços Públicos e Zeladoria",
+    ]
   },
 
   orgao: {
@@ -61,14 +73,31 @@ export const FIELDS: Record<string, FieldConfig> = {
 
   tipoContrato: {
     label: "Tipo do contrato",
-    placeholder: "tipo número/ano",
-    type: "masked",
     required: true,
-    regex: REGEX.contrato,
+    isDropdown: true,
+    options: [
+      "Chamamento Público",
+      "Concorrência",
+      "Dispensa",
+      "Inexigibilidade",
+      "Licitação",
+      "Pregão",
+      "Serviço",
+      "Termo de Convênio"
+    ]
+  },
+
+  numeroContrato: {
+    label: "Número do contrato",
+    placeholder: "número/ano",
+    type: "masked",
+    mask: "contrato",
+    required: true,
+    regex: REGEX.numeroContrato,
     schema: requiredString(
-      z.string().regex(REGEX.contrato, "Formato esperado: tipo xx/xx")
+      z.string().regex(REGEX.numeroContrato, "Formato esperado: xxxxxx/xx")
     ),
-    sanitize: sanitize.contratoChars,
+    sanitize: sanitize.contratoChars
   },
 
   fornecedor: {

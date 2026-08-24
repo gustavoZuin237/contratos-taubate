@@ -12,6 +12,7 @@ export function normalizeFormData(data: FormValues) {
     orgao: data.orgao,
     numeroProcesso: data.numeroProcesso,
     tipoContrato: data.tipoContrato,
+    numeroContrato: data.numeroContrato,
     fornecedor: data.fornecedor,
     objetoContrato: data.objetoContrato,
     ficha: data.ficha,

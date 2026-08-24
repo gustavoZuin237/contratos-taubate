@@ -11,6 +11,7 @@ export function formatRow(row: NormalizedRow) {
     [COLUMN_LABELS.orgao]: row.orgao,
     [COLUMN_LABELS.numeroProcesso]: row.numeroProcesso,
     [COLUMN_LABELS.tipoContrato]: row.tipoContrato,
+    [COLUMN_LABELS.numeroContrato]: row.numeroContrato,
     [COLUMN_LABELS.fornecedor]: titleCase(row.fornecedor),
     [COLUMN_LABELS.objetoContrato]: titleCase(row.objetoContrato),
     [COLUMN_LABELS.ficha]: row.ficha,

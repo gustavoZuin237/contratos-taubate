@@ -12,7 +12,7 @@ export const optionalString = (schema: z.ZodString) =>
 export const REGEX = {
   orgao: /^[0-9]{2}\.[0-9]{2}\.[0-9]{2}$/,
   processo: /^[0-9]{1,6}\/[0-9]{2}$/,
-  contrato: /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+\s[0-9]+\/[0-9]{2}$/,
+  numeroContrato: /^[0-9]{1,6}\/[0-9]{2}$/,
   dotacao:
     /^[0-9]{6}\.[0-9]{4}\.[0-9]{2}\.[0-9]{2}\.[0-9]{3}\.[0-9]{4}\.[0-9]{4}$/,
   data: /^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{2}$/,
@@ -37,7 +37,7 @@ export const sanitize = {
 
   processoChars: (v: string) => v.replace(/[^0-9/]/g, ""),
 
-  contratoChars: (v: string) => v.replace(/[^0-9A-Za-zÀ-ÿ\s/]/g, ""),
+  contratoChars: (v: string) => v.replace(/[^0-9/]/g, ""),
 
   alphanumeric: (v: string) => v.replace(/[^a-zA-Z0-9 ]/g, ""),
 
@@ -52,7 +52,7 @@ export const sanitize = {
 
 type FieldType = "text" | "number" | "date" | "masked";
 
-type MaskType = "orgao" | "processo" | "dotacao" | "data" | "dinheiro";
+export type MaskType = "orgao" | "processo" | "contrato" | "dotacao" | "data" | "dinheiro";
 
 type SanitizeFunction = (v: string) => string;
 
@@ -61,17 +61,18 @@ type AnyZodSchema = z.ZodType<any, any, any>;
 
 export interface FieldConfig {
   label: string;
-  type: FieldType;
-  placeholder: string;
+  type?: FieldType;
+  placeholder?: string;
   required: boolean;
   readOnly?: boolean;
   inputMode?: "numeric" | "decimal";
   mask?: MaskType;
   regex?: RegExp;
   schema?: AnyZodSchema;
-  sanitize: SanitizeFunction;
+  sanitize?: SanitizeFunction;
   maxLength?: number;
   sectionHeader?: boolean;
   sectionHeaderText?: string;
   isDropdown?: boolean;
+  options?: string[]
 }

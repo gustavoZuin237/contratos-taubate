@@ -18,6 +18,7 @@ export function normalizeRow(row: RawSpreadsheetRow): NormalizedRow {
     orgao: sanitizeString(row["Órgão"]),
     numeroProcesso: sanitizeString(row["N° do Processo"]),
     tipoContrato: sanitizeString(row["Tipo do contrato"]),
+    numeroContrato: sanitizeString(row["Número do contrato"]),
     fornecedor: sanitizeString(row["Fornecedor"]),
     objetoContrato: sanitizeString(row["Objeto do contrato"]),
     ficha: sanitizeString(row["Ficha"]),

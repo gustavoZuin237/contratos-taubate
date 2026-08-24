@@ -8,9 +8,6 @@ import { Dropdown } from "@components/Dropdown";
 
 import type { FieldConfig } from "@interfaces/fieldConfiguration";
 import type { FormValues } from "@data/fields";
-
-import { secretariaOptions } from "@data/dropdownOptions"
-
 interface Props {
   fieldName: keyof FormValues;
   config: FieldConfig;
@@ -32,17 +29,6 @@ export function EditableField({
 }: Props) {
   const [isComposing, setIsComposing] = useState(false);
 
-  let dropdownOptions: string[];
-
-  switch (config.label) {
-    case "Secretaria":
-      dropdownOptions = secretariaOptions;
-      break;
-
-    default:
-      break;
-  }
-
   return (
     <s.FieldWrapper>
       <s.LabelContainer>
@@ -59,7 +45,7 @@ export function EditableField({
         render={({ field: { onChange: rhfOnChange, value } }) => (
           config.isDropdown ? (
             <Dropdown
-              options={dropdownOptions}
+              options={config.options ?? [""]}
               value={(value as string) ?? ""}
               onChange={(selectedValue) => {
                 onChange(
