@@ -84,7 +84,7 @@ export function useContractForm() {
 
   function onValidSubmit(data: FormValues) {
     setRows((prev) => [...prev, normalizeFormData(data)]);
-    reset();
+    import.meta.env.DEV ? null : reset()
   }
 
   // localStorage functions to persist tables temporarily

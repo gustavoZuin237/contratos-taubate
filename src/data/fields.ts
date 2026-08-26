@@ -42,7 +42,10 @@ export const FIELDS: Record<string, FieldConfig> = {
       "Secretaria de Saúde",
       "Secretaria de Segurança e Ordem Pública",
       "Secretaria de Serviços Públicos e Zeladoria",
-    ]
+    ],
+    schema: requiredString(
+      z.string().min(1, "Selecione uma secretaria")
+    )
   },
 
   orgao: {
@@ -84,7 +87,10 @@ export const FIELDS: Record<string, FieldConfig> = {
       "Pregão",
       "Serviço",
       "Termo de Convênio"
-    ]
+    ],
+    schema: requiredString(
+      z.string().min(1, "Selecione uma secretaria")
+    )
   },
 
   numeroContrato: {
