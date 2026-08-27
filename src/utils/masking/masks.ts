@@ -1,4 +1,4 @@
-export type MaskType = "orgao" | "processo" | "dotacao" | "data" | "dinheiro";
+import type { MaskType } from "@interfaces/fieldConfiguration"
 
 type MaskFunction = (value: string) => string;
 
@@ -15,6 +15,8 @@ export const masks: Record<MaskType, MaskFunction> = {
   },
 
   processo: (value) => value.replace(/[^0-9/]/g, "").slice(0, 9),
+
+  contrato: (value) => value.replace(/[^0-9/]/g, "").slice(0, 9),
 
   data: (value) => {
     const numbers = onlyDigits(value);

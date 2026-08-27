@@ -2,14 +2,14 @@ import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useMemo, useEffect } from "react";
 
-import { FIELDS } from "../data/fields";
-import { formSchema, type FormValues } from "../data/fields";
+import { FIELDS } from "@data/fields";
+import { formSchema, type FormValues } from "@data/fields";
 
-import { masks } from "../utils/masking/masks";
-import { normalizeFormData } from "../utils/form/normalizeFormData";
-import { parseCurrency } from "../utils/currency/parseCurrency";
+import { masks } from "@utils/masking/masks";
+import { normalizeFormData } from "@utils/form/normalizeFormData";
+import { parseCurrency } from "@utils/currency/parseCurrency";
 
-import type { NormalizedRow } from "../types/rowFormats";
+import type { NormalizedRow } from "@interfaces/rowFormats";
 
 type StoredRows = {
   rows: NormalizedRow[];
@@ -84,7 +84,7 @@ export function useContractForm() {
 
   function onValidSubmit(data: FormValues) {
     setRows((prev) => [...prev, normalizeFormData(data)]);
-    reset();
+    import.meta.env.DEV ? null : reset()
   }
 
   // localStorage functions to persist tables temporarily

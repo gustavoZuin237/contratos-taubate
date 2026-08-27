@@ -1,4 +1,4 @@
-import { parseSpreadsheet } from "../../utils/excel/parser";
+import { parseSpreadsheet } from "@utils/excel/parser";
 
 export async function importSpreadsheet(files: FileList) {
   if (files.length === 0) {

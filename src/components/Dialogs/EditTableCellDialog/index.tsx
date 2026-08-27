@@ -6,7 +6,7 @@ import { Button } from "@components/Button";
 import toast from "react-hot-toast";
 
 import * as s from "./styles";
-import type { FieldConfig } from "../../../types/fieldConfiguration";
+import type { FieldConfig } from "@interfaces/fieldConfiguration";
 
 export interface EditCellDialogHandle {
   showModal: (value: string, label: string, config?: FieldConfig) => void;
@@ -63,7 +63,10 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
 
         dialogRef.current?.showModal();
       },
-      close: () => dialogRef.current?.close(),
+      close: () => {
+        dialogRef.current?.close()
+        setError("");
+      },
     }));
 
     function handleInputChange(rawValue: string) {
@@ -89,12 +92,14 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
 
       onConfirm(value);
       setValue("");
+      setError("");
       dialogRef.current?.close();
     }
 
     function handleCancel() {
       onCancel();
       setValue("");
+      setError("");
       dialogRef.current?.close();
     }
 

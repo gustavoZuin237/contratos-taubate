@@ -11,25 +11,27 @@ import {
   type EditCellDialogHandle,
 } from "@components/Dialogs/EditTableCellDialog";
 
-import { useContractForm } from "../../hooks/useContractForm";
-import { exportSpreadsheet } from "../../services/export";
+import { useContractForm } from "@hooks/useContractForm";
+import { exportSpreadsheet } from "@services/export";
 
-import { mockForm } from "../../utils/form/mockForm";
-import { FIELDS, type FormValues } from "../../data/fields";
+import { mockForm } from "@utils/form/mockForm";
+import { FIELDS, type FormValues } from "@data/fields";
 
 import { flexRender } from "@tanstack/react-table";
 
-import { useTable } from "../../hooks/useTable";
+import { useTable } from "@hooks/useTable";
+
 import toast from "react-hot-toast";
 import {
   PencilIcon,
   RowsPlusBottomIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import type { NormalizedRow } from "../../types/rowFormats";
+
+import type { NormalizedRow } from "@interfaces/rowFormats";
 
 import { v4 as uuidv4 } from "uuid";
-import { useFileExport } from "../../hooks/useFileExport";
+import { useFileExport } from "@hooks/useFileExport";
 
 document.title = "Contratos | PMT";
 
@@ -59,6 +61,11 @@ export function Home() {
     useFileExport(rows, setRows);
 
   const { table } = useTable(rows);
+
+  const dropdownFieldKeys = [
+    "secretaria",
+    "tipoContrato"
+  ]
 
   async function handleExport(fileName: string) {
     try {
@@ -116,9 +123,9 @@ export function Home() {
       prevRows.map((row) =>
         row.id === pendingEdit.rowId
           ? {
-              ...row,
-              [pendingEdit.columnHeader]: editedValue,
-            }
+            ...row,
+            [pendingEdit.columnHeader]: editedValue,
+          }
           : row
       )
     );
@@ -233,7 +240,7 @@ export function Home() {
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) =>
                     header.isPlaceholder ||
-                    header.column.columnDef.header ===
+                      header.column.columnDef.header ===
                       "Data de exportação" ? null : (
                       <s.StyledTableHeader key={header.id}>
                         {flexRender(
@@ -255,23 +262,28 @@ export function Home() {
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell) =>
                     "accessorKey" in cell.column.columnDef &&
-                    cell.column.columnDef.accessorKey ==
+                      cell.column.columnDef.accessorKey ==
                       "dataExportacao" ? null : (
                       <s.StyledTableCell key={cell.id}>
-                        <s.TableIconButton
-                          onClick={() => {
-                            if ("accessorKey" in cell.column.columnDef) {
-                              editCell(
-                                cell.row.original,
-                                cell.column.columnDef.accessorKey
-                              );
-                            } else {
-                              toast.error("Falha na edição!");
-                            }
-                          }}
-                        >
-                          <PencilIcon size={16} />
-                        </s.TableIconButton>
+                        {
+                          "accessorKey" in cell.column.columnDef && !dropdownFieldKeys.includes(cell.column.columnDef.accessorKey) ? (
+                            <s.TableIconButton
+                              onClick={() => {
+                                if ("accessorKey" in cell.column.columnDef) {
+                                  editCell(
+                                    cell.row.original,
+                                    cell.column.columnDef.accessorKey
+                                  );
+                                } else {
+                                  toast.error("Falha na edição!");
+                                }
+                              }}
+                            >
+                              <PencilIcon size={16} />
+                            </s.TableIconButton>
+                          ) : <></>
+                        }
+
 
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -318,7 +330,7 @@ export function Home() {
       <FileNameDialog
         ref={dialogRef}
         onConfirm={handleExport}
-        onCancel={() => {}}
+        onCancel={() => { }}
       />
 
       <EditCellDialog

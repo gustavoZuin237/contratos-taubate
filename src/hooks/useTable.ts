@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import type { NormalizedRow } from "../types/rowFormats";
+import type { NormalizedRow } from "../interfaces/rowFormats";
 
 import {
   getCoreRowModel,
@@ -9,7 +9,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { columns } from "../data/tableColumns";
+import { columns } from "@data/tableColumns";
 
 export function useTable(importedSheet: NormalizedRow[]) {
   const memoData = useMemo(() => {

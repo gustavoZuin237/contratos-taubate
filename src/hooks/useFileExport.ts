@@ -2,10 +2,10 @@ import { useRef } from "react";
 
 import { type FileNameDialogHandle } from "@components/Dialogs/FileNameDialog";
 
-import { exportSpreadsheet } from "../services/export";
-import { importSpreadsheet } from "../services/import";
+import { exportSpreadsheet } from "@services/export";
+import { importSpreadsheet } from "@services/import";
 
-import type { NormalizedRow } from "../types/rowFormats";
+import type { NormalizedRow } from "../interfaces/rowFormats";
 
 import toast from "react-hot-toast";
 

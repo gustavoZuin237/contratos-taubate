@@ -1,8 +1,8 @@
 import { createContext, useMemo, useState, type ReactNode } from "react";
 
-import { normalizeRow } from "../utils/excel/normalizer";
+import { normalizeRow } from "@utils/excel/normalizer";
 
-import type { NormalizedRow } from "../types/rowFormats";
+import type { NormalizedRow } from "../interfaces/rowFormats";
 
 type SpreadsheetContextType = {
   rawRows: RawSpreadsheetRow[];

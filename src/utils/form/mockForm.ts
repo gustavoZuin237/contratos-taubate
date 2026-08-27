@@ -7,6 +7,7 @@ export function mockForm(iterator: number) {
     orgao: "10.10.10",
     numeroProcesso: `${iterator}/${iterator < 10 ? `0${iterator}` : iterator}`,
     tipoContrato: `abc ${iterator < 10 ? iterator * 10 : iterator}/${iterator < 10 ? `0${iterator}` : iterator}`,
+    numeroContrato: `${iterator < 10 ? iterator * 10 : iterator}/${iterator < 10 ? `0${iterator}` : iterator}`,
     fornecedor: `Fornecedor de Teste ${iterator}`,
     objetoContrato: `Objeto de Teste ${iterator}`,
     ficha: "1234",
