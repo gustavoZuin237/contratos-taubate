@@ -10,6 +10,7 @@ export interface Theme {
   text: string;
   textMuted: string;
   danger: string;
+  white: string;
 }
 
 export const defaultTheme: Theme = {
@@ -24,4 +25,6 @@ export const defaultTheme: Theme = {
   text: "#1A202C",
   textMuted: "#5b6675",
   danger: "#f33d3d",
+
+  white: "#fff"
 };

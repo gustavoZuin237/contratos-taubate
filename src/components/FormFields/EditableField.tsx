@@ -4,9 +4,10 @@ import * as s from "./styles";
 import { type Control, type FieldErrors, Controller } from "react-hook-form";
 
 import { Input } from "@components/Input";
-import type { FieldConfig } from "../../types/fieldConfiguration";
-import type { FormValues } from "../../data/fields";
+import { Dropdown } from "@components/Dropdown";
 
+import type { FieldConfig } from "@interfaces/fieldConfiguration";
+import type { FormValues } from "@data/fields";
 interface Props {
   fieldName: keyof FormValues;
   config: FieldConfig;
@@ -42,28 +43,42 @@ export function EditableField({
         name={fieldName}
         control={control}
         render={({ field: { onChange: rhfOnChange, value } }) => (
-          <Input
-            value={(value as string) ?? ""}
-            placeholder={config.placeholder}
-            type={config.type}
-            inputMode={config.inputMode ?? undefined}
-            required={config.required}
-            aria-invalid={!!errors[fieldName]}
-            maxLength={config.maxLength}
-            onChange={(e) => {
-              if (isComposing) {
-                rhfOnChange(e.target.value);
-                return;
-              }
+          config.isDropdown ? (
+            <Dropdown
+              options={config.options ?? [""]}
+              value={(value as string) ?? ""}
+              onChange={(selectedValue) => {
+                onChange(
+                  fieldName,
+                  selectedValue,
+                  rhfOnChange
+                );
+              }}
+            />
+          ) : (
+            <Input
+              value={(value as string) ?? ""}
+              placeholder={config.placeholder}
+              type={config.type}
+              inputMode={config.inputMode ?? undefined}
+              required={config.required}
+              aria-invalid={!!errors[fieldName]}
+              maxLength={config.maxLength}
+              onChange={(e) => {
+                if (isComposing) {
+                  rhfOnChange(e.target.value);
+                  return;
+                }
 
-              onChange(fieldName, e.target.value, rhfOnChange);
-            }}
-            onCompositionStart={() => setIsComposing(true)}
-            onCompositionEnd={(e) => {
-              setIsComposing(false);
-              onChange(fieldName, e.currentTarget.value, rhfOnChange);
-            }}
-          />
+                onChange(fieldName, e.target.value, rhfOnChange);
+              }}
+              onCompositionStart={() => setIsComposing(true)}
+              onCompositionEnd={(e) => {
+                setIsComposing(false);
+                onChange(fieldName, e.currentTarget.value, rhfOnChange);
+              }}
+            />
+          )
         )}
       />
       {errors[fieldName] && (

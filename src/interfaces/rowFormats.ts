@@ -6,6 +6,7 @@ export const NormalizedRowSchema = Type.Object({
   orgao: Type.String(),
   numeroProcesso: Type.String(),
   tipoContrato: Type.String(),
+  numeroContrato: Type.String(),
   fornecedor: Type.String(),
   objetoContrato: Type.String(),
   ficha: Type.String(),

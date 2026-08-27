@@ -1,8 +1,8 @@
-import { formatCurrency } from "../utils/currency/formatCurrency";
+import { formatCurrency } from "@utils/currency/formatCurrency";
+
+import type { NormalizedRow } from "../interfaces/rowFormats";
 
 import type { ColumnDef } from "@tanstack/react-table";
-
-import type { NormalizedRow } from "../types/rowFormats";
 
 export const columns: ColumnDef<NormalizedRow>[] = [
   {
@@ -20,6 +20,10 @@ export const columns: ColumnDef<NormalizedRow>[] = [
   {
     accessorKey: "tipoContrato",
     header: "Tipo do contrato",
+  },
+  {
+    accessorKey: "numeroContrato",
+    header: "Número do contrato",
   },
   {
     accessorKey: "fornecedor",

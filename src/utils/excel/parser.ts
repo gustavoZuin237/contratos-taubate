@@ -1,10 +1,10 @@
 import * as XLSX from "xlsx";
 
-import type { NormalizedRow, RawSpreadsheetRow } from "../../types/rowFormats";
+import type { NormalizedRow, RawSpreadsheetRow } from "../../interfaces/rowFormats";
 
-import { validateColumns } from "./schemaValidator";
+import { validateColumns } from "@utils/excel/schemaValidator";
 
-import { normalizeRow } from "./normalizer";
+import { normalizeRow } from "@utils/excel/normalizer";
 
 export async function parseSpreadsheet(
   buffer: ArrayBuffer

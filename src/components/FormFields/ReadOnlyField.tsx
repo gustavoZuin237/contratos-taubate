@@ -1,7 +1,7 @@
 import * as s from "./styles";
 
 import { Input } from "@components/Input";
-import type { FieldConfig } from "../../types/fieldConfiguration";
+import type { FieldConfig } from "../../interfaces/fieldConfiguration";
 
 interface Props {
   config: FieldConfig;
