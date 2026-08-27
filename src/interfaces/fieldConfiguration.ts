@@ -52,7 +52,7 @@ export const sanitize = {
 
 type FieldType = "text" | "number" | "date" | "masked";
 
-export type MaskType = "orgao" | "processo" | "contrato" | "dotacao" | "data" | "dinheiro";
+export type MaskType = "orgao" | "processo" | "contrato" | "dotacao" | "data" | "diaMes" | "dinheiro";
 
 type SanitizeFunction = (v: string) => string;
 

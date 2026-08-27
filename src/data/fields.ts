@@ -248,6 +248,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     ),
     sanitize: sanitize.dateChars,
   },
+
   dataVencimento: {
     label: "Data de término/vencimento",
     placeholder: "dd/mm/aa",
@@ -264,7 +265,8 @@ export const FIELDS: Record<string, FieldConfig> = {
   diaPagamento: {
     label: "Dia de pagamento (Previsão)",
     placeholder: "xx",
-    type: "text",
+    type: "masked",
+    mask: "diaMes",
     inputMode: "numeric",
     required: false,
     regex: REGEX.diaMes,

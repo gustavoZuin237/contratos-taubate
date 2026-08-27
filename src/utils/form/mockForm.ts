@@ -6,7 +6,7 @@ export function mockForm(iterator: number) {
     secretaria: `Secretaria de Teste ${iterator}`,
     orgao: "10.10.10",
     numeroProcesso: `${iterator}/${iterator < 10 ? `0${iterator}` : iterator}`,
-    tipoContrato: `abc ${iterator < 10 ? iterator * 10 : iterator}/${iterator < 10 ? `0${iterator}` : iterator}`,
+    tipoContrato: `Teste`,
     numeroContrato: `${iterator < 10 ? iterator * 10 : iterator}/${iterator < 10 ? `0${iterator}` : iterator}`,
     fornecedor: `Fornecedor de Teste ${iterator}`,
     objetoContrato: `Objeto de Teste ${iterator}`,
@@ -15,9 +15,9 @@ export function mockForm(iterator: number) {
     fonte: `${iterator < 10 ? iterator * 10 : iterator}`,
     codigoAplicacao: "1234567",
     quantidadeProduto: "1 Produto de Teste",
-    dataInicio: "01/01/11",
+    dataInicio: "01/01/21",
     dataVencimento: "02/02/22",
-    diaPagamento: "03/03/33",
+    diaPagamento: "01",
     prazoMeses: 12,
     valorTotalContrato: 1000 * iterator,
     valorAnual: 1000 * iterator,
@@ -35,7 +35,7 @@ export function mockForm(iterator: number) {
     valor2027: 1000,
     valor2028: 1000,
     valor2029: 1000,
-    dataExportacao: "04/04/44",
+    dataExportacao: "04/04/24",
   };
 
   MOCK_FORM.valorTotalAnual =
