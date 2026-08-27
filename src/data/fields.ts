@@ -86,7 +86,8 @@ export const FIELDS: Record<string, FieldConfig> = {
       "Licitação",
       "Pregão",
       "Serviço",
-      "Termo de Convênio"
+      "Termo de Convênio",
+      "Outros"
     ],
     schema: requiredString(
       z.string().min(1, "Selecione uma secretaria")

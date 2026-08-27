@@ -6,7 +6,7 @@ export function NavHeader() {
   return (
     <s.NavbarContainer>
       <s.SideContainer>
-        <s.CityLogo src={logo} width={55} height={55} />
+        <s.CityLogo src={logo} width={55} height={55} role="presentation" />
 
         <s.CityTextContainer>
           <s.CityTitle>Prefeitura de Taubaté</s.CityTitle>

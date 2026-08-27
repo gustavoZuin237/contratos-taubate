@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-export const InputLabel = styled.p`
+export const InputLabel = styled.label`
   align-self: flex-start;
-  font-size: 0.9em;
   color: ${(props) => props.theme["text"]};
 `;
 export const FieldWrapper = styled.div`
