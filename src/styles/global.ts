@@ -73,7 +73,6 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
-    // Makes theme transition smooth
     *,
     *::before,
     *::after {

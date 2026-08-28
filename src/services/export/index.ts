@@ -48,12 +48,10 @@ export async function exportSpreadsheet(
 
   worksheet.addRows(rowsWithTimestamp);
 
-  // Bold headers
   headerRows.font = {
     bold: true,
   };
 
-  // Freeze header row
   worksheet.views = [
     {
       state: "frozen",
@@ -72,7 +70,6 @@ export async function exportSpreadsheet(
     fgColor: { argb: "FFBFBFBF" },
   };
 
-  // Align data rows to the right
   worksheet.eachRow((row, rowNumber) => {
     if (rowNumber === 1) return;
 
@@ -82,13 +79,11 @@ export async function exportSpreadsheet(
     };
   });
 
-  // Enable autofilters
   worksheet.autoFilter = {
     from: "A1",
     to: `${String.fromCharCode(headers.length + 64)}1`,
   };
 
-  // Generate file
   let buffer;
 
   try {

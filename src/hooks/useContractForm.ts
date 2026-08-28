@@ -87,7 +87,6 @@ export function useContractForm() {
     import.meta.env.DEV ? null : reset()
   }
 
-  // localStorage functions to persist tables temporarily
   function loadRows(): NormalizedRow[] {
     const saved = localStorage.getItem(STORAGE_KEY);
 
