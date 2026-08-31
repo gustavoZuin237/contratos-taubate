@@ -29,7 +29,9 @@ export function FormFields({
 }: Props) {
   return fieldEntries.map(([fieldName, config]) =>
     config.sectionHeader ? (
-      <s.SectionHeader key={fieldName}>{config.sectionHeaderText}</s.SectionHeader>
+      <s.SectionHeader key={fieldName}>
+        {config.sectionHeaderText}
+      </s.SectionHeader>
     ) : config.readOnly ? (
       <ReadOnlyField
         key={fieldName}

@@ -1,4 +1,4 @@
-import type { MaskType } from "@interfaces/fieldConfiguration"
+import type { MaskType } from "@interfaces/fieldConfiguration";
 
 type MaskFunction = (value: string) => string;
 

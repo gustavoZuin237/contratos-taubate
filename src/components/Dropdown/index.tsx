@@ -1,8 +1,4 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 
 import * as s from "./styles";
 
@@ -12,11 +8,7 @@ interface Props {
   onChange: (value: string) => void;
 }
 
-export function Dropdown({
-  options,
-  value,
-  onChange,
-}: Props) {
+export function Dropdown({ options, value, onChange }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -25,24 +17,16 @@ export function Dropdown({
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(
-          event.target as Node
-        )
+        !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener(
-      "mousedown",
-      handleClickOutside
-    );
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener(
-        "mousedown",
-        handleClickOutside
-      );
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -59,9 +43,7 @@ export function Dropdown({
       >
         {value || <i>--- Selecione uma opção ---</i>}
 
-        <s.Arrow $isOpen={isOpen}>
-          ▼
-        </s.Arrow>
+        <s.Arrow $isOpen={isOpen}>▼</s.Arrow>
       </s.DropdownButton>
 
       {isOpen && (

@@ -84,7 +84,7 @@ export function useContractForm() {
 
   function onValidSubmit(data: FormValues) {
     setRows((prev) => [...prev, normalizeFormData(data)]);
-    import.meta.env.DEV ? null : reset()
+    import.meta.env.DEV ? null : reset();
   }
 
   function loadRows(): NormalizedRow[] {

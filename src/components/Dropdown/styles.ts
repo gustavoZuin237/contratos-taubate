@@ -24,17 +24,14 @@ export const DropdownButton = styled.button`
   &:focus {
     outline: none;
     border-color: ${(props) => props.theme["primary"]};
-    box-shadow: 0 0 0 2px
-      ${(props) => props.theme["primary"]}33;
+    box-shadow: 0 0 0 2px ${(props) => props.theme["primary"]}33;
   }
 `;
 
 export const Arrow = styled.span<{ $isOpen: boolean }>`
   font-size: 0.7rem;
   transition: transform 0.2s ease;
-  transform: rotate(
-    ${(props) => (props.$isOpen ? "180deg" : "0deg")}
-  );
+  transform: rotate(${(props) => (props.$isOpen ? "180deg" : "0deg")});
 `;
 
 export const DropdownMenu = styled.div`
@@ -58,15 +55,10 @@ export const DropdownOption = styled.button<{
   border: none;
   text-align: left;
   cursor: pointer;
-  background-color: ${(props) =>
-    props.$selected
-    && props.theme["primary"]};
+  background-color: ${(props) => props.$selected && props.theme["primary"]};
 
-  color: ${(props) =>
-    props.$selected
-    && props.theme["white"]
-  };
-  
+  color: ${(props) => props.$selected && props.theme["white"]};
+
   &:hover {
     background-color: ${(props) => props.theme["primary"]};
     color: ${(props) => props.theme["white"]};
