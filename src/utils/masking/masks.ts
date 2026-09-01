@@ -1,4 +1,4 @@
-import type { MaskType } from "@interfaces/fieldConfiguration"
+import type { MaskType } from "@interfaces/fieldConfiguration";
 
 type MaskFunction = (value: string) => string;
 
@@ -37,6 +37,19 @@ export const masks: Record<MaskType, MaskFunction> = {
 
     const parts = [clampedDd, clampedMm, yy].filter(Boolean);
     return parts.join("/").slice(0, 8);
+  },
+
+  diaMes: (value) => {
+    const numbers = onlyDigits(value);
+
+    const dd = numbers.slice(0, 2).padEnd(2, "0");
+
+    const clampedDd =
+      numbers.length >= 2
+        ? String(Math.min(Math.max(parseInt(dd), 1), 31)).padStart(2, "0")
+        : numbers.slice(0, 2);
+
+    return clampedDd;
   },
 
   dinheiro: (value) => {

@@ -25,7 +25,7 @@ export function useFileExport(
       const existingData = await importSpreadsheet(file);
       pendingMergedRowsRef.current = [...existingData[0], ...rows];
 
-      setRows(pendingMergedRowsRef.current)
+      setRows(pendingMergedRowsRef.current);
 
       dialogRef.current?.showModal();
     } catch {

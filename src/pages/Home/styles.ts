@@ -114,10 +114,10 @@ export const RowCount = styled.div`
 export const RowCountTextContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const Disclaimer = styled.p`
   font-size: 0.9rem;
   color: ${(props) => props.theme["text"]};
   font-style: italic;
-`
+`;

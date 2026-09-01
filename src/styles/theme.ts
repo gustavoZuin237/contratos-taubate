@@ -26,5 +26,5 @@ export const defaultTheme: Theme = {
   textMuted: "#5b6675",
   danger: "#f33d3d",
 
-  white: "#fff"
+  white: "#fff",
 };

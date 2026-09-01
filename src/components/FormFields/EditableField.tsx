@@ -42,17 +42,13 @@ export function EditableField({
       <Controller
         name={fieldName}
         control={control}
-        render={({ field: { onChange: rhfOnChange, value } }) => (
+        render={({ field: { onChange: rhfOnChange, value } }) =>
           config.isDropdown ? (
             <Dropdown
               options={config.options ?? [""]}
               value={(value as string) ?? ""}
               onChange={(selectedValue) => {
-                onChange(
-                  fieldName,
-                  selectedValue,
-                  rhfOnChange
-                );
+                onChange(fieldName, selectedValue, rhfOnChange);
               }}
             />
           ) : (
@@ -79,7 +75,7 @@ export function EditableField({
               }}
             />
           )
-        )}
+        }
       />
       {errors[fieldName] && (
         <s.ErrorMessage>{errors[fieldName]?.message as string}</s.ErrorMessage>

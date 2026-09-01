@@ -50,8 +50,12 @@ export const columns: ColumnDef<NormalizedRow>[] = [
     header: "Código de aplicação",
   },
   {
-    accessorKey: "quantidadeProduto",
-    header: "Quantidade/Produto",
+    accessorKey: "gestorContrato",
+    header: "Gestor do contrato",
+  },
+  {
+    accessorKey: "alterador",
+    header: "Responsável pelo Preenchimento",
   },
   {
     accessorKey: "dataInicio",
@@ -65,6 +69,16 @@ export const columns: ColumnDef<NormalizedRow>[] = [
   {
     accessorKey: "dataVencimento",
     header: "Data de Término/Vencimento",
+    cell: ({ getValue }) => {
+      const value = getValue<Date>();
+
+      return value;
+    },
+  },
+
+  {
+    accessorKey: "diaPagamento",
+    header: "Dia de pagamento",
     cell: ({ getValue }) => {
       const value = getValue<Date>();
 
@@ -141,21 +155,12 @@ export const columns: ColumnDef<NormalizedRow>[] = [
     cell: ({ getValue }) => formatCurrency(getValue<number>()),
   },
   {
-    accessorKey: "diaPagamento",
-    header: "Dia de pagamento",
-    cell: ({ getValue }) => {
-      const value = getValue<Date>();
-
-      return value;
-    },
+    accessorKey: "quantidadeProduto",
+    header: "Quantidade/Produto",
   },
   {
-    accessorKey: "gestorContrato",
-    header: "Gestor do contrato",
-  },
-  {
-    accessorKey: "alterador",
-    header: "Responsável pelo Preenchimento",
+    accessorKey: "observacao",
+    header: "Observação",
   },
   {
     accessorKey: "dataExportacao",
@@ -165,9 +170,5 @@ export const columns: ColumnDef<NormalizedRow>[] = [
 
       return value;
     },
-  },
-  {
-    accessorKey: "observacao",
-    header: "Observação",
   },
 ];

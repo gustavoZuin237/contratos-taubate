@@ -64,7 +64,7 @@ export const EditCellDialog = forwardRef<EditCellDialogHandle, Props>(
         dialogRef.current?.showModal();
       },
       close: () => {
-        dialogRef.current?.close()
+        dialogRef.current?.close();
         setError("");
       },
     }));

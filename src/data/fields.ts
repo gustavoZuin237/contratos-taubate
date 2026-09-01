@@ -43,9 +43,7 @@ export const FIELDS: Record<string, FieldConfig> = {
       "Secretaria de Segurança e Ordem Pública",
       "Secretaria de Serviços Públicos e Zeladoria",
     ],
-    schema: requiredString(
-      z.string().min(1, "Selecione uma secretaria")
-    )
+    schema: requiredString(z.string().min(1, "Selecione uma secretaria")),
   },
 
   orgao: {
@@ -87,11 +85,9 @@ export const FIELDS: Record<string, FieldConfig> = {
       "Pregão",
       "Serviço",
       "Termo de Convênio",
-      "Outros"
+      "Outros",
     ],
-    schema: requiredString(
-      z.string().min(1, "Selecione uma secretaria")
-    )
+    schema: requiredString(z.string().min(1, "Selecione uma secretaria")),
   },
 
   numeroContrato: {
@@ -104,7 +100,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     schema: requiredString(
       z.string().regex(REGEX.numeroContrato, "Formato esperado: xxxxxx/xx")
     ),
-    sanitize: sanitize.contratoChars
+    sanitize: sanitize.contratoChars,
   },
 
   fornecedor: {
@@ -248,6 +244,7 @@ export const FIELDS: Record<string, FieldConfig> = {
     ),
     sanitize: sanitize.dateChars,
   },
+
   dataVencimento: {
     label: "Data de término/vencimento",
     placeholder: "dd/mm/aa",
@@ -264,7 +261,8 @@ export const FIELDS: Record<string, FieldConfig> = {
   diaPagamento: {
     label: "Dia de pagamento (Previsão)",
     placeholder: "xx",
-    type: "text",
+    type: "masked",
+    mask: "diaMes",
     inputMode: "numeric",
     required: false,
     regex: REGEX.diaMes,
@@ -304,7 +302,9 @@ export const FIELDS: Record<string, FieldConfig> = {
     mask: "dinheiro",
     required: true,
     regex: REGEX.dinheiro,
-    schema: requiredString(z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")),
+    schema: requiredString(
+      z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")
+    ),
     sanitize: sanitize.currency,
   },
 
@@ -316,7 +316,9 @@ export const FIELDS: Record<string, FieldConfig> = {
     mask: "dinheiro",
     required: true,
     regex: REGEX.dinheiro,
-    schema: requiredString(z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")),
+    schema: requiredString(
+      z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")
+    ),
     sanitize: sanitize.currency,
   },
 
@@ -370,7 +372,9 @@ export const FIELDS: Record<string, FieldConfig> = {
     mask: "dinheiro",
     required: true,
     regex: REGEX.dinheiro,
-    schema: requiredString(z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")),
+    schema: requiredString(
+      z.string().regex(REGEX.dinheiro, "Este campo é obrigatório!")
+    ),
     sanitize: sanitize.currency,
   },
 
